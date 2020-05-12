@@ -1,2 +1,2 @@
-# ChatRoom
+# Chat Project
 
