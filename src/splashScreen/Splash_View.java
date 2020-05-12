@@ -24,7 +24,7 @@ public class Splash_View extends View<Splash_Model> {
 
     public Splash_View(Stage stage, Splash_Model model) {
         super(stage, model);
-        stage.initStyle(StageStyle.TRANSPARENT); // also undecorated
+        stage.initStyle(StageStyle.TRANSPARENT);
     }
 
     @Override
