@@ -26,9 +26,9 @@ public class Login extends Message {
 			client.setAccount(account);
 			String token = Account.getToken();
 			client.setToken(token);
-			reply = new Result(true, token);
+			reply = new Result(this.getClass(), true, token);
 		} else {
-			reply = new Result(false);
+			reply = new Result(this.getClass(), false);
 		}
 		client.send(reply);
 	}

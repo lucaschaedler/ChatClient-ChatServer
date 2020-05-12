@@ -34,7 +34,7 @@ public class CreateLogin extends Message {
 				}
 			}
 		}
-		client.send(new Result(result));
+		client.send(new Result(this.getClass(), result));
 	}
 
 }

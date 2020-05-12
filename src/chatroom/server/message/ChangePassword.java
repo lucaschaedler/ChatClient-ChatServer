@@ -21,7 +21,7 @@ public class ChangePassword extends Message {
 			account.changePassword(password);
 			result = true;
 		}
-		client.send(new Result(result));
+		client.send(new Result(this.getClass(), result));
 	}
 
 }

@@ -21,7 +21,7 @@ public class Ping extends Message {
 	@Override
 	public void process(Client client) {
 		boolean result = (token == null || token.equals(client.getToken()));
-		client.send(new Result(result));
+		client.send(new Result(this.getClass(), result));
 	}
 
 }

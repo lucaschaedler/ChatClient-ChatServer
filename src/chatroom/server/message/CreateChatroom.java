@@ -31,6 +31,6 @@ public class CreateChatroom extends Message {
 				result = true;				
 			}
 		}
-		client.send(new Result(result));
+		client.send(new Result(this.getClass(), result));
 	}
 }

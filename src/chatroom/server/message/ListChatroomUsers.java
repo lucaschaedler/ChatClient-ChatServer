@@ -34,9 +34,9 @@ public class ListChatroomUsers extends Message {
 		}
 
 		if (result) {
-			client.send(new Result(true, names));
+			client.send(new Result(this.getClass(), true, names));
 		} else {
-			client.send(new Result(false));
+			client.send(new Result(this.getClass(), false));
 		}
 	}
 }

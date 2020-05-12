@@ -17,9 +17,9 @@ public class ListChatrooms extends Message {
 	public void process(Client client) {
 		if (client.getToken().equals(token)) {
 			ArrayList<String> names = Chatroom.listPublicNames();
-			client.send(new Result(true, names));
+			client.send(new Result(this.getClass(), true, names));
 		} else {
-			client.send(new Result(false));
+			client.send(new Result(this.getClass(), false));
 		}
 	}
 }

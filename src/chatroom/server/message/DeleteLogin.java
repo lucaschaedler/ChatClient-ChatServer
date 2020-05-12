@@ -20,6 +20,6 @@ public class DeleteLogin extends Message {
 			client.setAccount(null);
 			result = true;
 		}
-		client.send(new Result(result));
+		client.send(new Result(this.getClass(), result));
 	}
 }

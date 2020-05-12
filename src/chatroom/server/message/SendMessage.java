@@ -40,6 +40,6 @@ public class SendMessage extends Message {
 				result = true;
 			}
 		}
-		client.send(new Result(result));
+		client.send(new Result(this.getClass(), result));
 	}
 }

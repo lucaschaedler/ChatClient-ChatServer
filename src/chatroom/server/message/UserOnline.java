@@ -25,6 +25,6 @@ public class UserOnline extends Message {
 			Client c = Client.exists(username);
 			result = c != null && c.getToken() != null;
 		}
-		client.send(new Result(result));
+		client.send(new Result(this.getClass(), result));
 	}
 }
