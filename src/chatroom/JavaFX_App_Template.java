@@ -2,7 +2,7 @@ package chatroom;
 
 import chatroom.controller.App_Controller;
 import chatroom.model.App_Model;
-import chatroom.view.App_View;
+import chatroom.view_.App_View;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
