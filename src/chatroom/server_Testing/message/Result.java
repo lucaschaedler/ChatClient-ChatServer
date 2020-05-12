@@ -1,8 +1,8 @@
-package chatroom.server.message;
+package chatroom.server_Testing.message;
 
 import java.util.ArrayList;
 
-import chatroom.server.Client;
+import chatroom.server_Testing.Client;
 
 public class Result extends Message {
 

@@ -1,9 +1,9 @@
-package chatroom.server.message;
+package chatroom.server_Testing.message;
 
 import java.util.ArrayList;
 
-import chatroom.server.Chatroom;
-import chatroom.server.Client;
+import chatroom.server_Testing.Chatroom;
+import chatroom.server_Testing.Client;
 
 public class ListChatroomUsers extends Message {
 	private String token;

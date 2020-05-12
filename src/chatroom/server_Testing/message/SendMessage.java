@@ -1,8 +1,8 @@
-package chatroom.server.message;
+package chatroom.server_Testing.message;
 
-import chatroom.server.Chatroom;
-import chatroom.server.Client;
-import chatroom.server.Sendable;
+import chatroom.server_Testing.Chatroom;
+import chatroom.server_Testing.Client;
+import chatroom.server_Testing.Sendable;
 
 public class SendMessage extends Message {
 	private String token;

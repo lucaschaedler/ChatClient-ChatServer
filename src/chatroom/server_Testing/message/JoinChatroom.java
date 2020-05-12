@@ -1,7 +1,7 @@
-package chatroom.server.message;
+package chatroom.server_Testing.message;
 
-import chatroom.server.Chatroom;
-import chatroom.server.Client;
+import chatroom.server_Testing.Chatroom;
+import chatroom.server_Testing.Client;
 
 /**
  * Add a user as a member of a chatroom.

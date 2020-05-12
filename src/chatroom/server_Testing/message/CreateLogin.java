@@ -1,8 +1,8 @@
-package chatroom.server.message;
+package chatroom.server_Testing.message;
 
-import chatroom.server.Account;
-import chatroom.server.Chatroom;
-import chatroom.server.Client;
+import chatroom.server_Testing.Account;
+import chatroom.server_Testing.Chatroom;
+import chatroom.server_Testing.Client;
 
 /**
  * Create a completely new login. After creating an account, the user must still

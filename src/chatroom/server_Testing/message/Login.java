@@ -1,7 +1,7 @@
-package chatroom.server.message;
+package chatroom.server_Testing.message;
 
-import chatroom.server.Account;
-import chatroom.server.Client;
+import chatroom.server_Testing.Account;
+import chatroom.server_Testing.Client;
 
 /**
  * Login to an existing account. If successful, return an authentication token

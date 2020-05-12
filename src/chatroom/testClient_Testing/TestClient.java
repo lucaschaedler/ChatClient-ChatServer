@@ -1,4 +1,4 @@
-package chatroom.testClient;
+package chatroom.testClient_Testing;
 
 import java.io.BufferedReader;
 import java.io.IOException;
