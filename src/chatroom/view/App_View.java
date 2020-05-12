@@ -1,4 +1,4 @@
-package chatroom.view_;
+package chatroom.view;
 
 
 
@@ -27,7 +27,7 @@ public class App_View extends View<App_Model> {
 	@Override
 	protected Scene create_GUI() {
 
-		return null;
+		return scene;
 	}
 
 }

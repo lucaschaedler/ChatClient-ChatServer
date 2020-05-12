@@ -1,4 +1,4 @@
-package chatroom.view_;
+package chatroom.view;
 
 import java.util.Locale;
 import java.util.MissingResourceException;
