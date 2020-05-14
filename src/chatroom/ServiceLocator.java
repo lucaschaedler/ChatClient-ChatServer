@@ -18,73 +18,75 @@ import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.commonClasses.Translator;
  * @author Brad Richards
  */
 public class ServiceLocator {
-    private static ServiceLocator serviceLocator; // singleton
+	private static ServiceLocator serviceLocator; // singleton
 
-    // Application-global constants
-    final private Class<?> APP_CLASS = JavaFX_App_Template.class;
-    final private String APP_NAME = "JavaFX_App_Template";
-    
-    // Supported locales (for translations)
-    final private Locale[] locales = new Locale[] { new Locale("en"), new Locale("de") };
+	// Application-global constants
+	final private Class<?> APP_CLASS = JavaFX_App_Template.class;
+	final private String APP_NAME = "JavaFX_App_Template";
 
-    // Resources
-    private Logger logger;
-    private Configuration configuration;
-    private Translator translator;
+	// Supported locales (for translations)
+	final private Locale[] locales = new Locale[] { new Locale("en"), new Locale("de") };
 
-    /**
-     * Factory method for returning the singleton
-     * @param mainClass The main class of this program
-     * @return The singleton resource locator
-     */
-    public static ServiceLocator getServiceLocator() {
-        if (serviceLocator == null)
-            serviceLocator = new ServiceLocator();
-        return serviceLocator;
-    }
+	// Resources
+	private Logger logger;
+	private Configuration configuration;
+	private Translator translator;
 
-    /**
-     * Private constructor, because this class is a singleton
-     * @param appName Name of the main class of this program
-     */
-    private ServiceLocator() {
-        // Currently nothing to do here. We must define this constructor anyway,
-        // because the default constructor is public
-    }
+	/**
+	 * Factory method for returning the singleton
+	 * 
+	 * @param mainClass The main class of this program
+	 * @return The singleton resource locator
+	 */
+	public static ServiceLocator getServiceLocator() {
+		if (serviceLocator == null)
+			serviceLocator = new ServiceLocator();
+		return serviceLocator;
+	}
 
-    public Class<?> getAPP_CLASS() {
-        return APP_CLASS;
-    }
-    
-    public String getAPP_NAME() {
-        return APP_NAME;
-    }
+	/**
+	 * Private constructor, because this class is a singleton
+	 * 
+	 * @param appName Name of the main class of this program
+	 */
+	private ServiceLocator() {
+		// Currently nothing to do here. We must define this constructor anyway,
+		// because the default constructor is public
+	}
 
-    public Logger getLogger() {
-        return logger;
-    }
+	public Class<?> getAPP_CLASS() {
+		return APP_CLASS;
+	}
 
-    public void setLogger(Logger logger) {
-        this.logger = logger;
-    }
+	public String getAPP_NAME() {
+		return APP_NAME;
+	}
 
-    public Configuration getConfiguration() {
-        return configuration;
-    }
+	public Logger getLogger() {
+		return logger;
+	}
 
-    public void setConfiguration(Configuration configuration) {
-        this.configuration = configuration;
-    }
+	public void setLogger(Logger logger) {
+		this.logger = logger;
+	}
 
-    public Locale[] getLocales() {
-        return locales;
-    }
+	public Configuration getConfiguration() {
+		return configuration;
+	}
 
-    public Translator getTranslator() {
-        return translator;
-    }
-    
-    public void setTranslator(Translator translator) {
-        this.translator = translator;
-    }
+	public void setConfiguration(Configuration configuration) {
+		this.configuration = configuration;
+	}
+
+	public Locale[] getLocales() {
+		return locales;
+	}
+
+	public Translator getTranslator() {
+		return translator;
+	}
+
+	public void setTranslator(Translator translator) {
+		this.translator = translator;
+	}
 }
