@@ -1,0 +1,87 @@
+package chatroom.view_;
+
+import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.commonClasses.Translator;
+import chatroom.ServiceLocator;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
+public class LoginView extends Stage {
+
+	public GridPane pane;
+	public Button confirmBtn, createAccountBtn;
+	public TextField userName, password;
+	public Label userNameLbl, passwordLbl;
+
+	public LoginView() {
+		pane = new GridPane();
+		confirmBtn = new Button("Confirm");
+		createAccountBtn = new Button("Create Account");
+		userNameLbl = new Label("\tUsername:\t");
+		passwordLbl = new Label("\tPassword:\t");
+		userName = new TextField();
+		password = new TextField();
+
+		pane.add(userNameLbl, 1, 1);
+		pane.add(userName, 2, 1);
+		pane.add(passwordLbl, 1, 2);
+		pane.add(password, 2, 2);
+		pane.add(createAccountBtn, 1, 4);
+		pane.add(confirmBtn, 3, 4);
+
+		pane.setVgap(5);
+
+		Scene scene = new Scene(pane);
+		this.setTitle("Login");
+		this.setScene(scene);
+		this.show();
+		this.setAlwaysOnTop(true);
+
+	}
+
+	public String getUserName() {
+		return userName.getText();
+	}
+
+	public String getPassword() {
+		return password.getText();
+	}
+
+	public Button getConfirmBtn() {
+		return confirmBtn;
+	}
+
+	public Button getCreateAccountBtn() {
+		return createAccountBtn;
+	}
+
+	public void stop() {
+		this.hide();
+	}
+
+	public Stage getLoginFrame() {
+		return this;
+	}
+
+	public void failedToDoLogin() {
+		Label failedLbl = new Label("Failed to do Login");
+		failedLbl.setTextFill(Color.RED);
+		pane.add(failedLbl, 0, 4);
+		this.sizeToScene();
+	}
+
+	public void updateTexts() {
+		Translator t = ServiceLocator.getServiceLocator().getTranslator();
+
+		userNameLbl.setText(t.getString("button.menu.LoginView.userNameLbl"));
+		passwordLbl.setText(t.getString("button.menu.LoginView.passwordLbl"));
+		confirmBtn.setText(t.getString("button.menu.LoginView.confirmBtn"));
+		createAccountBtn.setText(t.getString("button.menu.LoginView.createAccountBtn"));
+
+	}
+
+}

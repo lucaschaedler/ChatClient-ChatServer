@@ -1,4 +1,4 @@
-package chatroom.view;
+package chatroom.view_;
 
 
 import javafx.application.Application;
