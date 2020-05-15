@@ -5,7 +5,10 @@ package chatroom.view_;
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.abstractClasses.View;
 import chatroom.ServiceLocator;
 import chatroom.model.App_Model;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 /**
@@ -16,18 +19,23 @@ import javafx.stage.Stage;
  * @author Brad Richards
  */
 public class App_View extends View<App_Model> {
+	
+	public LoginView loginView;
 
 	public App_View(Stage stage, App_Model model) {
 		super(stage, model);
 		ServiceLocator.getServiceLocator().getLogger().info("Application view initialized");
 		stage.setScene(create_GUI());
-		stage.toBack();
+		
 	}
 
 	@Override
 	protected Scene create_GUI() {
-
 		return scene;
 	}
 
+	
+	
+
+	
 }

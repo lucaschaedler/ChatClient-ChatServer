@@ -50,9 +50,9 @@ public class ChangePasswordView extends Stage {
 	 public void updateTexts() {
 	       Translator t = ServiceLocator.getServiceLocator().getTranslator(); 
 	       
-	       confirmBtn.setText(t.getString("button.menu.LoginView.confirmBtn"));
-	       oldPasswordLbl.setText(t.getString("button.menu.changePasswordView.newPasswordLbl"));
-	       newPasswordLbl.setText(t.getString("button.menu.changePasswordView.oldPasswordLbl"));
+	       confirmBtn.setText(t.getString("loginview.button.confirmbtn"));
+	       oldPasswordLbl.setText(t.getString("changepasswordview.label.newpasswordlbl"));
+	       newPasswordLbl.setText(t.getString("changepasswordview.label.oldpasswordlbl"));
 	       
 	    }
 
