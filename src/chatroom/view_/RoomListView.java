@@ -13,6 +13,7 @@ public class RoomListView extends ScrollPane {
 			"shippinoroom");
 
 	public RoomListView(){
+		roomListView = new ListView<>();
 		roomListView.setItems(chatRooms);
 		roomListView.setMaxWidth(160);
 		this.setContent(roomListView);

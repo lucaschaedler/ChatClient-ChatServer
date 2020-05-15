@@ -47,7 +47,7 @@ public class App_View extends View<App_Model> {
 		root.setCenter(chatScreenView);
 		root.setRight(userListView);
 		root.setBottom(userPanel);
-		scene.setRoot(root);
+		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
 		return scene;
 	}
