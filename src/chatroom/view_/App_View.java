@@ -4,13 +4,9 @@ import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.abstractClasses.View;
 import chatroom.ServiceLocator;
 import chatroom.model.App_Model;
 import javafx.scene.Scene;
-<<<<<<< HEAD
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-=======
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBase;
->>>>>>> branch 'master' of https://gitlab.fhnw.ch/luca.schaedler/chatroom.git
 import javafx.stage.Stage;
 
 /**
