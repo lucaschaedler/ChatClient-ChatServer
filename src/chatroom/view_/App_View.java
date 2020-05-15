@@ -4,8 +4,13 @@ import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.abstractClasses.View;
 import chatroom.ServiceLocator;
 import chatroom.model.App_Model;
 import javafx.scene.Scene;
+<<<<<<< HEAD
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+=======
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBase;
+>>>>>>> branch 'master' of https://gitlab.fhnw.ch/luca.schaedler/chatroom.git
 import javafx.stage.Stage;
 
 /**
@@ -16,8 +21,10 @@ import javafx.stage.Stage;
  * @author Brad Richards
  */
 public class App_View extends View<App_Model> {
-
+	
+	//classes
 	public LoginView loginView;
+	public AccountView accountView;
 
 	public App_View(Stage stage, App_Model model) {
 		super(stage, model);
@@ -48,5 +55,23 @@ public class App_View extends View<App_Model> {
 		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
 		return scene;
 	}
+
+	public void createLoginView() {
+		loginView = new LoginView();
+	}
+	
+	public Button getConfirmLoginBtn() {
+		return loginView.getConfirmBtn();
+	}
+	
+	public void createAccountView() {
+		accountView = new AccountView();
+	}
+
+	public Button getCreateAccountBtn() {
+		return accountView.getConfirmBtn();
+	}
+
+	
 
 }
