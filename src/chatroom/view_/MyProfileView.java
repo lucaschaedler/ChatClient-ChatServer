@@ -65,7 +65,7 @@ public class MyProfileView extends Stage{
 		this.sizeToScene();
 		this.centerOnScreen();
 		this.resizableProperty().setValue(Boolean.FALSE); //no maximizing allowed
-		this.getIcons().add(MainView.msn);
+		//this.getIcons().add(msn);
 		this.setTitle("Chat Messenger");
 		this.show();
 	}

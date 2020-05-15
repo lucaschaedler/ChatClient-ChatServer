@@ -18,6 +18,13 @@ public class UserPanel extends HBox {
 	public TextArea writeTextArea;
 
 	public UserPanel() {
+		addRoomBtn = new Button("Add Room");
+		joinRoomBtn = new Button("Join Room");
+		blockUserBtn = new Button("Block");
+		sendMessageBtn = new Button("Send");
+		writeScrollPane = new ScrollPane();
+		writeTextArea = new TextArea();
+		
 		// MessageBox
 		writeTextArea.setText("--->>>Nachrichten schreiben<<<---");
 		writeTextArea.setMinWidth(700);
