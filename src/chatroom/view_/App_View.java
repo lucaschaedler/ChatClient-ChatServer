@@ -48,7 +48,7 @@ public class App_View extends View<App_Model> {
 		root.setRight(userListView);
 		root.setBottom(userPanel);
 		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("mainview.css").toExternalForm());
 		return scene;
 	}
 
@@ -60,13 +60,15 @@ public class App_View extends View<App_Model> {
 		return loginView.getConfirmBtn();
 	}
 	
+	public Button getCreateAccountBtn() {
+		return loginView.getCreateAccountBtn();
+	}
+	
 	public void createAccountView() {
 		accountView = new AccountView();
 	}
 
-	public Button getCreateAccountBtn() {
-		return accountView.getConfirmBtn();
-	}
+	
 
 	
 
