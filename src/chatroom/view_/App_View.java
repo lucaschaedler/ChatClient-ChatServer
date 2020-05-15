@@ -31,10 +31,7 @@ public class App_View extends View<App_Model> {
 
 	@Override
 	protected Scene create_GUI() {
-<<<<<<< HEAD
-		
-=======
->>>>>>> branch 'master' of https://gitlab.fhnw.ch/luca.schaedler/chatroom.git
+
 		return scene;
 	}
 
