@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBase;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 /**
@@ -21,6 +23,7 @@ public class App_View extends View<App_Model> {
 	//classes
 	public LoginView loginView;
 	public AccountView accountView;
+	public ChatMenu chatMenu;
 
 	public App_View(Stage stage, App_Model model) {
 		super(stage, model);
@@ -66,6 +69,14 @@ public class App_View extends View<App_Model> {
 	
 	public void createAccountView() {
 		accountView = new AccountView();
+	}
+
+	public MenuItem getCreateAccountItem() {
+		return chatMenu.getCreateAccountItem();
+	}
+
+	public MenuItem getLoginItem() {
+		return chatMenu.getLoginItem();
 	}
 
 	

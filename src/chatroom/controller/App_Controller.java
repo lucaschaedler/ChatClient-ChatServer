@@ -66,12 +66,18 @@ public class App_Controller extends Controller<App_Model, App_View> {
         view.getConfirmLoginBtn().setOnAction(e->{
         	doLogin();
         });
-        //login über menu bar machen
+        
+        view.getLoginItem().setOnAction(e->{
+        	doLogin();
+        });
         
         view.getCreateAccountBtn().setOnAction(e->{
         	createAccountView();
         });
-        //account über menu bar machen
+        
+        view.getCreateAccountItem().setOnAction(e->{
+        	createAccountView();
+        });
 
 	}
 

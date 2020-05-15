@@ -2,6 +2,7 @@ package chatroom.view_;
 
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.commonClasses.Translator;
 import chatroom.ServiceLocator;
+import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -52,5 +53,13 @@ public class ChatMenu extends MenuBar {
 		blockListItem.setText(t.getString("mainview.menu.preferences.blocklist"));
 		deleteAccountItem.setText(t.getString("mainview.menu.preferences.deleteaccount"));
 		languageMenu.setText(t.getString("mainview.menu.preferences.languagemenu"));
+	}
+
+	public MenuItem getCreateAccountItem() {
+		return createAccountItem;
+	}
+
+	public MenuItem getLoginItem() {
+		return loginItem;
 	}
 }
