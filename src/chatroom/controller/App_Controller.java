@@ -63,8 +63,26 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		serviceLocator = ServiceLocator.getServiceLocator();        
         serviceLocator.getLogger().info("Application controller initialized");
         
+        view.getConfirmLoginBtn().setOnAction(e->{
+        	doLogin();
+        });
+        //login über menu bar machen
         
+        view.getCreateAccountBtn().setOnAction(e->{
+        	createAccountView();
+        });
+        //account über menu bar machen
 
+	}
+
+	private void doLogin() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void createAccountView() {
+		// TODO Auto-generated method stub
+		
 	}//konstruktor
 
 }//klasse
