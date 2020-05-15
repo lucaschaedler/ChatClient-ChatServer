@@ -40,7 +40,7 @@ public class MainView extends Stage {
 	public TextArea screenTextArea, writeTextArea;
 	public ListView<String> roomListView, userListView;
 
-	private Image msn = new Image(MainView.class.getResourceAsStream("msn_logo.png"));
+	protected static Image msn = new Image(MainView.class.getResourceAsStream("msn_logo.png"));
 	
 	
 	public MainView() {
