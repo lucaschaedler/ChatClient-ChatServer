@@ -64,7 +64,7 @@ public class AccountView extends Stage {
 		return password.getText();
 	}
 
-	public Button getConfirmBtn() {
+	public Button getConfirmCreateAccountBtn() {
 		return confirmBtn;
 	}
 

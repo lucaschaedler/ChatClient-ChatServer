@@ -40,7 +40,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 				succededAlert.setContentText("Connection to server succeded");
 				Optional<ButtonType> result = succededAlert.showAndWait();
 
-				view.createLoginView();
+				view.createNewLoginView();
 
 				if (!result.isPresent())
 					if (result.get() == ButtonType.CANCEL) {
@@ -59,36 +59,53 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		serviceLocator = ServiceLocator.getServiceLocator();        
-        serviceLocator.getLogger().info("Application controller initialized");
-        
-        view.getConfirmLoginBtn().setOnAction(e->{
-        	doLogin();
-        });
-        
-        view.getLoginItem().setOnAction(e->{
-        	doLogin();
-        });
-        
-        view.getCreateAccountBtn().setOnAction(e->{
-        	createAccountView();
-        });
-        
+
+		serviceLocator = ServiceLocator.getServiceLocator();
+		serviceLocator.getLogger().info("Application controller initialized");
+
+		view.getLoginItem().setOnAction(e -> {
+			createLoginView();
+		});
+
+		view.getConfirmLoginBtn().setOnAction(e -> {
+			doLogin();
+		});
+
+		view.getCreateAccountBtn().setOnAction(e -> {
+			createAccountView();
+		});
+
         view.getCreateAccountItem().setOnAction(e->{
         	createAccountView();
         });
 
 	}
 
+	private void createLoginView() {
+		view.createNewLoginView();
+		view.getConfirmLoginBtn().setOnAction(e -> {
+			doLogin();
+		});
+		view.getCreateAccountBtn().setOnAction(e -> {
+			createAccountView();
+		});
+	}
+
 	private void doLogin() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private void createAccountView() {
-		// TODO Auto-generated method stub
-		
-	}//konstruktor
+		view.createNewAccountView();
+		view.getConfirmCreateAccountBtn().setOnAction(e -> {
+			createAccounOnServer();
+		});
+	}// konstruktor
 
-}//klasse
+	private void createAccounOnServer() {
+		// TODO Auto-generated method stub
+
+	}
+
+}// klasse

@@ -24,6 +24,11 @@ public class App_View extends View<App_Model> {
 	public LoginView loginView;
 	public AccountView accountView;
 	public ChatMenu chatMenu;
+	public RoomListView roomListView;
+	public ChatScreenView chatScreenView;
+	public UserListView userListView;
+	public UserPanel userPanel;
+	public BorderPane root;
 
 	public App_View(Stage stage, App_Model model) {
 		super(stage, model);
@@ -39,12 +44,12 @@ public class App_View extends View<App_Model> {
 
 	@Override
 	protected Scene create_GUI() {
-		ChatMenu chatMenu = new ChatMenu();
-		RoomListView roomListView = new RoomListView();
-		ChatScreenView chatScreenView = new ChatScreenView();
-		UserListView userListView = new UserListView();
-		UserPanel userPanel = new UserPanel();
-		BorderPane root = new BorderPane();
+		chatMenu = new ChatMenu();
+		roomListView = new RoomListView();
+		chatScreenView = new ChatScreenView();
+		userListView = new UserListView();
+		userPanel = new UserPanel();
+		root = new BorderPane();
 		root.setTop(chatMenu);
 		root.setLeft(roomListView);
 		root.setCenter(chatScreenView);
@@ -55,7 +60,7 @@ public class App_View extends View<App_Model> {
 		return scene;
 	}
 
-	public void createLoginView() {
+	public void createNewLoginView() {
 		loginView = new LoginView();
 	}
 	
@@ -67,7 +72,7 @@ public class App_View extends View<App_Model> {
 		return loginView.getCreateAccountBtn();
 	}
 	
-	public void createAccountView() {
+	public void createNewAccountView() {
 		accountView = new AccountView();
 	}
 
@@ -77,6 +82,10 @@ public class App_View extends View<App_Model> {
 
 	public MenuItem getLoginItem() {
 		return chatMenu.getLoginItem();
+	}
+
+	public Button getConfirmCreateAccountBtn() {
+		return accountView.getConfirmCreateAccountBtn();
 	}
 
 	
