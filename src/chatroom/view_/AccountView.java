@@ -86,11 +86,11 @@ public class AccountView extends Stage {
 	public void updateTexts() {
 		Translator t = ServiceLocator.getServiceLocator().getTranslator();
 
-		userNameLbl.setText(t.getString("button.menu.LoginView.userNameLbl"));
-		passwordLbl.setText(t.getString("button.menu.LoginView.passwordLbl"));
-		passwordConfirmLbl.setText(t.getString("button.menu.AccountView.passwordConfirmLbl"));
-		confirmBtn.setText(t.getString("button.menu.LoginView.confirmBtn"));
-		cancelBtn.setText(t.getString("button.menu.AccountView.cancelBtn"));
+		userNameLbl.setText(t.getString("loginview.label.usernameLbl"));
+		passwordLbl.setText(t.getString("loginview.label.passswordlbl"));
+		passwordConfirmLbl.setText(t.getString("accountview.label.passwordconfirmlbl"));
+		confirmBtn.setText(t.getString("loginview.button.confirmbtn"));
+		cancelBtn.setText(t.getString("accountview.button.cancelBtn"));
 
 	}
 

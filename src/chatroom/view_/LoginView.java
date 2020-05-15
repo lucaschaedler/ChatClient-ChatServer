@@ -77,10 +77,10 @@ public class LoginView extends Stage {
 	public void updateTexts() {
 		Translator t = ServiceLocator.getServiceLocator().getTranslator();
 
-		userNameLbl.setText(t.getString("button.menu.LoginView.userNameLbl"));
-		passwordLbl.setText(t.getString("button.menu.LoginView.passwordLbl"));
-		confirmBtn.setText(t.getString("button.menu.LoginView.confirmBtn"));
-		createAccountBtn.setText(t.getString("button.menu.LoginView.createAccountBtn"));
+		userNameLbl.setText(t.getString("loginview.label.usernameLbl"));
+		passwordLbl.setText(t.getString("loginview.label.passswordlbl"));
+		confirmBtn.setText(t.getString("loginview.button.confirmbtn"));
+		createAccountBtn.setText(t.getString("loginview.button.createaccountbtn"));
 
 	}
 
