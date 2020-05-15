@@ -14,7 +14,8 @@ import javafx.stage.Stage;
  * @author Brad Richards
  */
 public class App_View extends View<App_Model> {
-
+	
+	//classes
 	public LoginView loginView;
 
 	public App_View(Stage stage, App_Model model) {
@@ -28,6 +29,10 @@ public class App_View extends View<App_Model> {
 	protected Scene create_GUI() {
 
 		return scene;
+	}
+
+	public void createLoginView() {
+		loginView = new LoginView();
 	}
 
 }
