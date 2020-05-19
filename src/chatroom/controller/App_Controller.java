@@ -2,7 +2,6 @@ package chatroom.controller;
 
 import java.util.Locale;
 import java.util.Optional;
-
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.abstractClasses.Controller;
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.commonClasses.Translator;
 import chatroom.ServiceLocator;
@@ -228,6 +227,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		serviceLocator.getConfiguration().save();
 		Platform.exit();
 		System.exit(0);
+		serviceLocator.getLogger().info("Application terminated");
+		
 	}
 
 	private void addNewRoom() {
