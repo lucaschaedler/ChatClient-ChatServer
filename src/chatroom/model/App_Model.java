@@ -60,4 +60,9 @@ public class App_Model extends Model {
 
 	}
 
+	public boolean createChatroom(String text, boolean selected) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

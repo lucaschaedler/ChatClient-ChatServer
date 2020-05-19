@@ -148,12 +148,18 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	private void addNewRoom() {
 		view.createNewChatroomView();
+		view.createChatRoomView.createNewRoomBtn.setOnAction(e ->{
+			if(model.createChatroom(view.createChatRoomView.chatroomNameTxtF.getText(),
+				view.createChatRoomView.isPublicCheckBox.isSelected())) {
+				
+			}
+		});
 		
 	}
 
 
 
-	private void joinSelectedRoom() {
+	private void joinSelectedRoom() { 
 		// TODO Auto-generated method stub
 		
 	}
