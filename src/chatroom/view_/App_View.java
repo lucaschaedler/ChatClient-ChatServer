@@ -28,13 +28,10 @@ public class App_View extends View<App_Model> {
 	public UserListView userListView;
 	public UserPanel userPanel;
 	public BorderPane root;
-
 	public CreateNewChatroomView createChatRoomView;
-
 	public MyProfileView myProfileView;
 	public ChangePasswordView changePasswordView;
 	public BlockListView blockListView;
-	public CreateNewChatroomView chatRoomView;
 
 	public App_View(Stage stage, App_Model model) {
 		super(stage, model);
@@ -111,7 +108,7 @@ public class App_View extends View<App_Model> {
 	}
 
 	public void createNewChatroomView() {
-		chatRoomView = new CreateNewChatroomView();
+		createChatRoomView = new CreateNewChatroomView();
 
 	}
 

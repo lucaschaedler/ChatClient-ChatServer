@@ -160,7 +160,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		});
 
 		view.userPanel.joinRoomBtn.setOnAction(e -> {
-			joinSelectedRoom();
+			joinChatroom();
 		});
 
 		view.userPanel.blockUserBtn.setOnAction(e -> {
@@ -206,8 +206,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		});
 		view.getCreateAccountBtn().setOnAction(e -> {
 			createAccountView();
-			//hide wenn neue account erstelle
-			//verschwindet wenn man erfolgreich erstellt hat
+			// hide wenn neue account erstelle
+			// verschwindet wenn man erfolgreich erstellt hat
 		});
 	}
 
@@ -230,9 +230,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	}
 
-	private void joinSelectedRoom() {
-		// TODO Auto-generated method stub
-
+	private void joinChatroom() {
+		model.joinSelectedChatroom(view.roomListView.roomListView.getSelectionModel().getSelectedItem());
 	}
 
 	private void blockSelectedUser() {
@@ -241,8 +240,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void sendMessage() {
-		// TODO Auto-generated method stub
-
+		model.sendAMessage(view.userPanel.writeTextArea.getText());
+		view.userPanel.writeTextArea.clear();
 	}
 
 	private void changePassword() {
@@ -253,8 +252,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		String name = view.getLoginUsername();
 		String password = view.getLoginPassword();
 		model.logout(name, password);
-			view.stop();
-		
+		view.stop();
+
 	}
 
 	private void unBlockUser() {
@@ -267,15 +266,18 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	}
 
+	private void refresh() {
+		// TODO Auto-generated method stub
+
+	}
+
 	private void doLogin() {
 		String name = view.getLoginUsername();
 		String password = view.getLoginPassword();
 		if (model.login(name, password)) {
 			view.showUser(name);
-			view.start();//startet das gui wenn eingeloggt
+			view.start();// startet das gui wenn eingeloggt
 			view.destroyLoginView();
-			
-			
 
 		} else {
 			view.loginView.failedToDoLogin();
@@ -291,11 +293,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		} else {
 			view.accountView.failedToCreateAccount();
 		}
-	}
-
-	private void refresh() {
-		// TODO Auto-generated method stub
-
 	}
 
 }// klasse
