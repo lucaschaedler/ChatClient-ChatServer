@@ -160,7 +160,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		});
 
 		view.userPanel.joinRoomBtn.setOnAction(e -> {
-			joinSelectedRoom();
+			joinChatroom();
 		});
 
 		view.userPanel.blockUserBtn.setOnAction(e -> {
@@ -208,21 +208,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		});
 	}
 
-	private void doLogin() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void createAccountOnServer() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void refresh() {
-		// TODO Auto-generated method stub
-
-	}
-
 	private void exit() {
 		serviceLocator.getConfiguration().save();
 		Platform.exit();
@@ -242,9 +227,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	}
 
-	private void joinSelectedRoom() {
-		// TODO Auto-generated method stub
-
+	private void joinChatroom() {
+		model.joinSelectedChatroom(view.roomListView.roomListView.getSelectionModel().getSelectedItem());
 	}
 
 	private void blockSelectedUser() {
@@ -253,8 +237,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void sendMessage() {
-		// TODO Auto-generated method stub
-
+		model.sendAMessage(view.userPanel.writeTextArea.getText());
+		view.userPanel.writeTextArea.clear();
 	}
 
 	private void changePassword() {
@@ -272,6 +256,21 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void deleteAccount() {
+		// TODO Auto-generated method stub
+
+	}
+	
+	private void doLogin() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void createAccountOnServer() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void refresh() {
 		// TODO Auto-generated method stub
 
 	}
