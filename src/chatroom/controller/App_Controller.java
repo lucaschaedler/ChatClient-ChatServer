@@ -79,13 +79,36 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			createAccountView();
 		});
 		
+		view.chatMenu.refreshItem.setOnAction(e-> { //evt rausnehmen?
+			refresh();
+		});
+		
+		view.chatMenu.exitItem.setOnAction(e -> {
+			exit();
+		});
+		
+		view.userPanel.addRoomBtn.setOnAction(e -> {
+			addNewRoom();
+		});
+		
+		view.userPanel.joinRoomBtn.setOnAction(e -> {
+			joinSelectedRoom();
+		});
+		
+		view.userPanel.blockUserBtn.setOnAction(e -> {
+			blockSelectedUser();
+		});
+		
+		view.userPanel.sendMessageBtn.setOnAction(e -> {
+			sendMessage();
+		});
 
 	}// konstruktor
 
 	private void createAccountView() {
 		view.createNewAccountView();
 		view.getConfirmCreateAccountBtn().setOnAction(e -> {
-			createAccounOnServer();
+			createAccountOnServer();
 		});
 	}
 
@@ -104,9 +127,47 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	}
 
-	private void createAccounOnServer() {
+	private void createAccountOnServer() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	
+	private void refresh() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	private void exit() {
+		Runtime.getRuntime().exit(0);
+	}
+
+
+
+	private void addNewRoom() {
+		view.createNewChatroomView();
+		
+	}
+
+
+
+	private void joinSelectedRoom() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	private void blockSelectedUser() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private void sendMessage() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }// klasse
