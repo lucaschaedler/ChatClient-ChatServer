@@ -79,7 +79,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			createAccountView();
 		});
 		
-		System.out.println(10);
 
 	}// konstruktor
 
