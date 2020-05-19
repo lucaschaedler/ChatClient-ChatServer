@@ -225,7 +225,9 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void exit() {
-		Runtime.getRuntime().exit(0);
+		serviceLocator.getConfiguration().save();
+		Platform.exit();
+		System.exit(0);
 	}
 
 	private void addNewRoom() {

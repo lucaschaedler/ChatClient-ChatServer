@@ -40,7 +40,6 @@ public class AccountView extends Stage {
 		pane.setVgap(5);
 
 		Scene scene = new Scene(pane);
-		this.setTitle("Create Account");
 		this.setScene(scene);
 		this.show();
 		this.setAlwaysOnTop(true);
@@ -93,6 +92,7 @@ public class AccountView extends Stage {
 		passwordConfirmLbl.setText(t.getString("accountview.label.passwordconfirmlbl"));
 		confirmBtn.setText(t.getString("loginview.button.confirmbtn"));
 		cancelBtn.setText(t.getString("accountview.button.cancelBtn"));
+		this.setTitle(t.getString("accountview.titel"));
 
 	}
 
