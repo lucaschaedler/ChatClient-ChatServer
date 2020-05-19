@@ -68,6 +68,8 @@ public class MyProfileView extends Stage{
 		//this.getIcons().add(msn);
 		this.setTitle("Chat Messenger");
 		this.show();
+		
+		updateTexts();
 	}
 	
 	public void updateTexts() {

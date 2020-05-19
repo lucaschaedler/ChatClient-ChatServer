@@ -19,8 +19,8 @@ import javafx.stage.Stage;
  * @author Brad Richards
  */
 public class App_View extends View<App_Model> {
-	
-	//classes
+
+	// classes
 	public LoginView loginView;
 	public AccountView accountView;
 	public ChatMenu chatMenu;
@@ -29,7 +29,13 @@ public class App_View extends View<App_Model> {
 	public UserListView userListView;
 	public UserPanel userPanel;
 	public BorderPane root;
+
 	public CreateNewChatroomView createChatRoomView;
+
+	public MyProfileView myProfileView;
+	public ChangePasswordView changePasswordView;
+	public BlockListView blockListView;
+	public CreateNewChatroomView chatRoomView;
 
 	public App_View(Stage stage, App_Model model) {
 		super(stage, model);
@@ -37,7 +43,7 @@ public class App_View extends View<App_Model> {
 		stage.setScene(create_GUI());
 		stage.sizeToScene();
 		stage.centerOnScreen();
-		stage.resizableProperty().setValue(Boolean.FALSE); //no maximizing allowed
+		stage.resizableProperty().setValue(Boolean.FALSE); // no maximizing allowed
 		Image msn = new Image(App_View.class.getResourceAsStream("msn_logo.png"));
 		stage.getIcons().add(msn);
 		stage.setTitle("Chat Messenger");
@@ -64,15 +70,15 @@ public class App_View extends View<App_Model> {
 	public void createNewLoginView() {
 		loginView = new LoginView();
 	}
-	
+
 	public Button getConfirmLoginBtn() {
 		return loginView.getConfirmBtn();
 	}
-	
+
 	public Button getCreateAccountBtn() {
 		return loginView.getCreateAccountBtn();
 	}
-	
+
 	public void createNewAccountView() {
 		accountView = new AccountView();
 	}
@@ -89,13 +95,27 @@ public class App_View extends View<App_Model> {
 		return accountView.getConfirmCreateAccountBtn();
 	}
 
-	public void createNewChatroomView() {
+
+	public void createChatroomView() {
 		createChatRoomView = new CreateNewChatroomView();
+	}
 		
+
+	public void createMyProfilView() {
+		myProfileView = new MyProfileView();
 	}
 
-	
+	public void createChangePasswordView() {
+		changePasswordView = new ChangePasswordView();
+	}
 
-	
+	public void createBlockListView() {
+		blockListView = new BlockListView();
+	}
+
+	public void createNewChatroomView() {
+		chatRoomView = new CreateNewChatroomView();
+
+	}
 
 }

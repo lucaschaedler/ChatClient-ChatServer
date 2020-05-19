@@ -18,6 +18,7 @@ public class ChatScreenView extends ScrollPane {
 		this.setContent(screenTextArea);
 		this.setPadding(new Insets(10));
 		this.setMinSize(720, 420);
+		
 	}
 	
 	

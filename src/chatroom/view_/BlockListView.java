@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -37,6 +38,8 @@ public class BlockListView extends Stage {
 		this.setTitle("Block List");
 		this.show();
 		this.setAlwaysOnTop(true);
+		
+		updateTexts();
 	}
 	
 	 public void updateTexts() {
@@ -47,5 +50,9 @@ public class BlockListView extends Stage {
 
 	       
 	    }
+
+	public Button getUnblockBtn() {
+		return unblockBtn;
+	}
 
 }

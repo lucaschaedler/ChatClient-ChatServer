@@ -1,8 +1,10 @@
 package chatroom.controller;
 
+import java.util.Locale;
 import java.util.Optional;
 
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.abstractClasses.Controller;
+import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.commonClasses.Translator;
 import chatroom.ServiceLocator;
 import chatroom.model.App_Model;
 import chatroom.view_.App_View;
@@ -10,6 +12,7 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.MenuItem;
 import javafx.stage.WindowEvent;
 
 /**
@@ -78,32 +81,116 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		view.getCreateAccountItem().setOnAction(e -> {
 			createAccountView();
 		});
-		
-		view.chatMenu.refreshItem.setOnAction(e-> { //evt rausnehmen?
+
+		view.chatMenu.myProfileItem.setOnAction(e -> {
+			createMyProfilView();
+		});
+
+		view.chatMenu.changePasswordItem.setOnAction(e -> {
+			createChangePasswordView();
+		});
+
+		view.chatMenu.getMenuLogoutItem().setOnAction(e -> {
+			doLogout();
+		});
+
+		view.chatMenu.blockListItem.setOnAction(e -> {
+			createBlockListView();
+		});
+
+		view.chatMenu.deleteAccountItem.setOnAction(e -> {
+			deleteAccount();
+		});
+
+		ServiceLocator sl = ServiceLocator.getServiceLocator();
+		for (Locale locale : sl.getLocales()) {
+			MenuItem language = new MenuItem(locale.getLanguage());
+			view.chatMenu.languageMenu.getItems().add(language);
+			language.setOnAction(event -> {
+				sl.getConfiguration().setLocalOption("Language", locale.getLanguage());
+				sl.setTranslator(new Translator(locale.getLanguage()));
+				try {
+					view.chatMenu.updateTexts();
+				} catch (NullPointerException e) {
+					// ignore happen when view isn't open
+				}
+				try {
+					view.blockListView.updateTexts();
+				} catch (NullPointerException e) {
+					// ignore happen when view isn't open
+				}
+				try {
+					view.accountView.updateTexts();
+				} catch (NullPointerException e) {
+					// ignore happen when view isn't open
+				}
+				try {
+					view.changePasswordView.updateTexts();
+				} catch (NullPointerException e) {
+					// ignore happen when view isn't open
+				}
+				try {
+					view.loginView.updateTexts();
+				} catch (NullPointerException e) {
+					// ignore happen when view isn't open
+				}
+				try {
+					view.myProfileView.updateTexts();
+				} catch (NullPointerException e) {
+					// ignore happen when view isn't open
+				}
+				try {
+					view.userPanel.updateTexts();
+				} catch (NullPointerException e) {
+					// ignore happen when view isn't open
+				}
+
+			});
+		}
+
+		view.chatMenu.refreshItem.setOnAction(e -> { // evt rausnehmen?
 			refresh();
 		});
-		
+
 		view.chatMenu.exitItem.setOnAction(e -> {
 			exit();
 		});
-		
+
 		view.userPanel.addRoomBtn.setOnAction(e -> {
 			addNewRoom();
 		});
-		
+
 		view.userPanel.joinRoomBtn.setOnAction(e -> {
 			joinSelectedRoom();
 		});
-		
+
 		view.userPanel.blockUserBtn.setOnAction(e -> {
 			blockSelectedUser();
 		});
-		
+
 		view.userPanel.sendMessageBtn.setOnAction(e -> {
 			sendMessage();
 		});
 
 	}// konstruktor
+
+	private void createBlockListView() {
+		view.createBlockListView();
+		view.blockListView.getUnblockBtn().setOnAction(e -> {
+			unBlockUser();
+		});
+	}
+
+	private void createChangePasswordView() {
+		view.createChangePasswordView();
+		view.changePasswordView.getConfirmBtn().setOnAction(e -> {
+			changePassword();
+		});
+	}
+
+	private void createMyProfilView() {
+		view.createMyProfilView();
+	}
 
 	private void createAccountView() {
 		view.createNewAccountView();
@@ -131,49 +218,59 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		// TODO Auto-generated method stub
 
 	}
-	
-	
+
 	private void refresh() {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-
 
 	private void exit() {
 		Runtime.getRuntime().exit(0);
 	}
 
-
-
 	private void addNewRoom() {
-		view.createNewChatroomView();
-		view.createChatRoomView.createNewRoomBtn.setOnAction(e ->{
-			if(model.createChatroom(view.createChatRoomView.chatroomNameTxtF.getText(),
-				view.createChatRoomView.isPublicCheckBox.isSelected())) {
-				
+		view.createChatroomView();
+		view.createChatRoomView.createNewRoomBtn.setOnAction(e -> {
+			if (model.createChatroom(view.createChatRoomView.chatroomNameTxtF.getText(),
+					view.createChatRoomView.isPublicCheckBox.isSelected())) {
+
 			}
 		});
-		
+
 	}
 
-
-
-	private void joinSelectedRoom() { 
+	private void joinSelectedRoom() {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-
 
 	private void blockSelectedUser() {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	private void sendMessage() {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	private void changePassword() {
+		// TODO Auto-generated method stub
+	}
+
+	private void doLogout() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void unBlockUser() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void deleteAccount() {
+		// TODO Auto-generated method stub
+
 	}
 
 }// klasse

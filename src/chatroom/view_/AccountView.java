@@ -44,6 +44,8 @@ public class AccountView extends Stage {
 		this.setScene(scene);
 		this.show();
 		this.setAlwaysOnTop(true);
+		
+		updateTexts();
 
 	}
 
