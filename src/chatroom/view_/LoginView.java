@@ -5,6 +5,7 @@ import chatroom.ServiceLocator;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -14,7 +15,8 @@ public class LoginView extends Stage {
 
 	public GridPane pane;
 	public Button confirmBtn, createAccountBtn;
-	public TextField userName, password;
+	public TextField userName;
+	public PasswordField password;
 	public Label userNameLbl, passwordLbl;
 
 	public LoginView() {
@@ -24,7 +26,7 @@ public class LoginView extends Stage {
 		userNameLbl = new Label("\tUsername:\t");
 		passwordLbl = new Label("\tPassword:\t");
 		userName = new TextField();
-		password = new TextField();
+		password = new PasswordField();
 
 		pane.add(userNameLbl, 1, 1);
 		pane.add(userName, 2, 1);
@@ -37,11 +39,19 @@ public class LoginView extends Stage {
 
 		Scene scene = new Scene(pane);
 		this.setScene(scene);
-		this.show();
+		// this.show();
 		this.setAlwaysOnTop(true);
-		
+
 		updateTexts();
 
+	}
+
+	public void start() {
+		this.show();
+	}
+
+	public void stop() {
+		this.hide();
 	}
 
 	public String getUserName() {
@@ -60,10 +70,6 @@ public class LoginView extends Stage {
 		return createAccountBtn;
 	}
 
-	public void stop() {
-		this.hide();
-	}
-
 	public Stage getLoginFrame() {
 		return this;
 	}
@@ -71,7 +77,7 @@ public class LoginView extends Stage {
 	public void failedToDoLogin() {
 		Label failedLbl = new Label("Failed to do Login");
 		failedLbl.setTextFill(Color.RED);
-		pane.add(failedLbl, 0, 4);
+		pane.add(failedLbl, 2, 4);
 		this.sizeToScene();
 	}
 

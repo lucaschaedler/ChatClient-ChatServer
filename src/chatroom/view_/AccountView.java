@@ -41,11 +41,15 @@ public class AccountView extends Stage {
 
 		Scene scene = new Scene(pane);
 		this.setScene(scene);
-		this.show();
+	//this.show();
 		this.setAlwaysOnTop(true);
 		
 		updateTexts();
 
+	}
+	
+	public void start() {
+		this.show();
 	}
 
 	public void stop() {

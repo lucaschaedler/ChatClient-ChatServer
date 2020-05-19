@@ -66,6 +66,14 @@ public class App_View extends View<App_Model> {
 	public void createNewLoginView() {
 		loginView = new LoginView();
 	}
+	
+	public void createNewLoginViewStart() {
+		loginView.start();
+	}
+	
+	public void createNewLoginViewStop() {
+		loginView.stop();
+	}
 
 	public Button getConfirmLoginBtn() {
 		return loginView.getConfirmBtn();
@@ -77,6 +85,14 @@ public class App_View extends View<App_Model> {
 
 	public void createNewAccountView() {
 		accountView = new AccountView();
+	}
+	
+	public void createNewAccountViewStart() {
+		accountView.start();
+	}
+	
+	public void createNewAccountViewStop() {
+		accountView.stop();
 	}
 
 	public MenuItem getCreateAccountItem() {
@@ -135,5 +151,11 @@ public class App_View extends View<App_Model> {
 	public void destroyLoginView() {
 		loginView.getLoginFrame().close();
 	}
+
+	public Button getCancelBtnAccountView() {
+		return accountView.getCancelBtn();
+	}
+
+	
 
 }

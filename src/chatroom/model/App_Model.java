@@ -138,4 +138,9 @@ public class App_Model extends Model {
 
 	}
 
+	public boolean changePassword(String text, String text2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -5,8 +5,7 @@ import chatroom.ServiceLocator;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -14,7 +13,7 @@ import javafx.stage.Stage;
 public class ChangePasswordView extends Stage {
 
 	public Label oldPasswordLbl, newPasswordLbl;
-	public TextField oldPassword, newPassword;
+	public PasswordField oldPassword, newPassword;
 	public Button confirmBtn;
 	public GridPane pane;
 
@@ -22,8 +21,8 @@ public class ChangePasswordView extends Stage {
 		pane = new GridPane();
 		oldPasswordLbl = new Label("\tOld Password:\t");
 		newPasswordLbl = new Label("\tNew Password:\t");
-		oldPassword = new TextField();
-		newPassword = new TextField();
+		oldPassword = new PasswordField();
+		newPassword = new PasswordField();
 		confirmBtn = new Button("Confirm");
 
 		pane.add(oldPasswordLbl, 1, 1);

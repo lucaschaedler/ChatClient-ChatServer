@@ -43,6 +43,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 				Optional<ButtonType> result = succededAlert.showAndWait();
 
 				view.createNewLoginView();
+				view.createNewLoginViewStart();
 
 				if (!result.isPresent())
 					if (result.get() == ButtonType.CANCEL) {
@@ -101,6 +102,30 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			deleteAccount();
 		});
 
+		view.chatMenu.refreshItem.setOnAction(e -> { // evt rausnehmen?
+			refresh();
+		});
+
+		view.chatMenu.exitItem.setOnAction(e -> {
+			exit();
+		});
+
+		view.userPanel.addRoomBtn.setOnAction(e -> {
+			addNewRoom();
+		});
+
+		view.userPanel.joinRoomBtn.setOnAction(e -> {
+			joinChatroom();
+		});
+
+		view.userPanel.blockUserBtn.setOnAction(e -> {
+			blockSelectedUser();
+		});
+
+		view.userPanel.sendMessageBtn.setOnAction(e -> {
+			sendMessage();
+		});
+
 		ServiceLocator sl = ServiceLocator.getServiceLocator();
 		for (Locale locale : sl.getLocales()) {
 			MenuItem language = new MenuItem(locale.getLanguage());
@@ -147,30 +172,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			});
 		}
 
-		view.chatMenu.refreshItem.setOnAction(e -> { // evt rausnehmen?
-			refresh();
-		});
-
-		view.chatMenu.exitItem.setOnAction(e -> {
-			exit();
-		});
-
-		view.userPanel.addRoomBtn.setOnAction(e -> {
-			addNewRoom();
-		});
-
-		view.userPanel.joinRoomBtn.setOnAction(e -> {
-			joinChatroom();
-		});
-
-		view.userPanel.blockUserBtn.setOnAction(e -> {
-			blockSelectedUser();
-		});
-
-		view.userPanel.sendMessageBtn.setOnAction(e -> {
-			sendMessage();
-		});
-
 	}// konstruktor
 
 	private void createBlockListView() {
@@ -193,21 +194,30 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	private void createAccountView() {
 		view.createNewAccountView();
-		view.start(); // test nacher empfernen
+		view.createNewAccountViewStart();
+		try {
+			view.createNewLoginViewStop();
+		} catch (Exception e) {
+			// falls keine Login offen ist ignorieren
+		}
+		view.start(); // Test um main gui zu öffenen ohne korrektes login
 		view.getConfirmCreateAccountBtn().setOnAction(e -> {
 			createAccountOnServer();
+		});
+		view.getCancelBtnAccountView().setOnAction(e -> {
+			view.createNewLoginViewStart();
+			view.createNewAccountViewStop();
 		});
 	}
 
 	private void createLoginView() {
 		view.createNewLoginView();
+		view.createNewLoginViewStart();
 		view.getConfirmLoginBtn().setOnAction(e -> {
 			doLogin();
 		});
 		view.getCreateAccountBtn().setOnAction(e -> {
 			createAccountView();
-			// hide wenn neue account erstelle
-			// verschwindet wenn man erfolgreich erstellt hat
 		});
 	}
 
@@ -234,18 +244,18 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		model.joinSelectedChatroom(view.roomListView.roomListView.getSelectionModel().getSelectedItem());
 	}
 
-	private void blockSelectedUser() {
-		// TODO Auto-generated method stub
-
-	}
-
 	private void sendMessage() {
 		model.sendAMessage(view.userPanel.writeTextArea.getText());
 		view.userPanel.writeTextArea.clear();
 	}
 
 	private void changePassword() {
-		// TODO Auto-generated method stub
+		if (model.changePassword(view.changePasswordView.oldPassword.getText(),
+				view.changePasswordView.newPassword.getText())) {
+			view.changePasswordView.close();
+		} else {
+			view.changePasswordView.failedToChangePassword();
+		}
 	}
 
 	private void doLogout() {
@@ -253,6 +263,12 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		String password = view.getLoginPassword();
 		model.logout(name, password);
 		view.stop();
+		view.createNewLoginViewStart();
+
+	}
+
+	private void blockSelectedUser() {
+		// TODO Auto-generated method stub
 
 	}
 
@@ -276,7 +292,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		String password = view.getLoginPassword();
 		if (model.login(name, password)) {
 			view.showUser(name);
-			view.start();// startet das gui wenn eingeloggt
+			view.start();// main gui start when login is correct
 			view.destroyLoginView();
 
 		} else {
@@ -289,7 +305,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		String name = view.getUsernameCreate();
 		String password = view.getPasswordCreate();
 		if (model.createAccount(name, password)) {
-
+			view.createNewAccountViewStop();
+			view.createNewLoginViewStart();
 		} else {
 			view.accountView.failedToCreateAccount();
 		}
