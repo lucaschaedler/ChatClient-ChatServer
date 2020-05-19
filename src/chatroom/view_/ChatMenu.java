@@ -7,6 +7,10 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
+/*
+ * MenuBar App_View
+ */
+
 public class ChatMenu extends MenuBar {
 
 	private Menu fileMenu, profileMenu, preferencesMenu, languageMenu;
