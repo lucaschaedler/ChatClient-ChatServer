@@ -75,10 +75,17 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			createAccountView();
 		});
 
-        view.getCreateAccountItem().setOnAction(e->{
-        	createAccountView();
-        });
+		view.getCreateAccountItem().setOnAction(e -> {
+			createAccountView();
+		});
 
+	}// konstruktor
+
+	private void createAccountView() {
+		view.createNewAccountView();
+		view.getConfirmCreateAccountBtn().setOnAction(e -> {
+			createAccounOnServer();
+		});
 	}
 
 	private void createLoginView() {
@@ -95,13 +102,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		// TODO Auto-generated method stub
 
 	}
-
-	private void createAccountView() {
-		view.createNewAccountView();
-		view.getConfirmCreateAccountBtn().setOnAction(e -> {
-			createAccounOnServer();
-		});
-	}// konstruktor
 
 	private void createAccounOnServer() {
 		// TODO Auto-generated method stub
