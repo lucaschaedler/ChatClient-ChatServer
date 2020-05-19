@@ -78,6 +78,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		view.getCreateAccountItem().setOnAction(e -> {
 			createAccountView();
 		});
+		
+		System.out.println(10);
 
 	}// konstruktor
 
