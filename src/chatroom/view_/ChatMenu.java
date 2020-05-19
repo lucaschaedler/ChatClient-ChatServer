@@ -5,6 +5,7 @@ import chatroom.ServiceLocator;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.Region;
 
 /*
  * MenuBar App_View
@@ -32,12 +33,11 @@ public class ChatMenu extends MenuBar {
 		deleteAccountItem = new MenuItem();
 		languageMenu = new Menu();
 
-
 		fileMenu.getItems().addAll(refreshItem, exitItem);
 		profileMenu.getItems().addAll(createAccountItem, loginItem, myProfileItem, changePasswordItem, logoutItem);
 		preferencesMenu.getItems().addAll(languageMenu, blockListItem, deleteAccountItem);
 		this.getMenus().addAll(fileMenu, profileMenu, preferencesMenu);
-		
+
 		updateTexts();
 	}
 
@@ -69,6 +69,14 @@ public class ChatMenu extends MenuBar {
 
 	public MenuItem getMenuLogoutItem() {
 		return logoutItem;
+	}
+
+	public void showUser(String name) {
+		Region space = new Region();
+		Menu userName = new Menu(name + " is logged in.");
+		userName.setDisable(true);
+		this.getChildren().add(space);
+		this.getMenus().add(userName);
 	}
 
 }

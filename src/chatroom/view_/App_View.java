@@ -94,11 +94,9 @@ public class App_View extends View<App_Model> {
 		return accountView.getConfirmCreateAccountBtn();
 	}
 
-
 	public void createChatroomView() {
 		createChatRoomView = new CreateNewChatroomView();
 	}
-		
 
 	public void createMyProfilView() {
 		myProfileView = new MyProfileView();
@@ -115,6 +113,30 @@ public class App_View extends View<App_Model> {
 	public void createNewChatroomView() {
 		chatRoomView = new CreateNewChatroomView();
 
+	}
+
+	public String getUsernameCreate() {
+		return accountView.getUserName();
+	}
+
+	public String getPasswordCreate() {
+		return accountView.getPassword();
+	}
+
+	public String getLoginPassword() {
+		return loginView.getPassword();
+	}
+
+	public String getLoginUsername() {
+		return loginView.getUserName();
+	}
+
+	public void showUser(String name) {
+		chatMenu.showUser(name);
+	}
+
+	public void destroyLoginView() {
+		loginView.getLoginFrame().close();
 	}
 
 }

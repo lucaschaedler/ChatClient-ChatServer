@@ -193,6 +193,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	private void createAccountView() {
 		view.createNewAccountView();
+		view.start(); // test nacher empfernen
 		view.getConfirmCreateAccountBtn().setOnAction(e -> {
 			createAccountOnServer();
 		});
@@ -205,22 +206,9 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		});
 		view.getCreateAccountBtn().setOnAction(e -> {
 			createAccountView();
+			//hide wenn neue account erstelle
+			//verschwindet wenn man erfolgreich erstellt hat
 		});
-	}
-
-	private void doLogin() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void createAccountOnServer() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void refresh() {
-		// TODO Auto-generated method stub
-
 	}
 
 	private void exit() {
@@ -228,7 +216,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		Platform.exit();
 		System.exit(0);
 		serviceLocator.getLogger().info("Application terminated");
-		
+
 	}
 
 	private void addNewRoom() {
@@ -262,8 +250,11 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void doLogout() {
-		// TODO Auto-generated method stub
-
+		String name = view.getLoginUsername();
+		String password = view.getLoginPassword();
+		model.logout(name, password);
+			view.stop();
+		
 	}
 
 	private void unBlockUser() {
@@ -272,6 +263,37 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void deleteAccount() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void doLogin() {
+		String name = view.getLoginUsername();
+		String password = view.getLoginPassword();
+		if (model.login(name, password)) {
+			view.showUser(name);
+			view.start();//startet das gui wenn eingeloggt
+			view.destroyLoginView();
+			
+			
+
+		} else {
+			view.loginView.failedToDoLogin();
+
+		}
+	}
+
+	private void createAccountOnServer() {
+		String name = view.getUsernameCreate();
+		String password = view.getPasswordCreate();
+		if (model.createAccount(name, password)) {
+
+		} else {
+			view.accountView.failedToCreateAccount();
+		}
+	}
+
+	private void refresh() {
 		// TODO Auto-generated method stub
 
 	}

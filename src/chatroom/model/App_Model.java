@@ -9,6 +9,7 @@ import java.net.UnknownHostException;
 
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.abstractClasses.Model;
 import chatroom.ServiceLocator;
+import javafx.beans.property.SimpleBooleanProperty;
 
 /**
  * Copyright 2015, FHNW, Prof. Dr. Brad Richards. All rights reserved. This code
@@ -25,6 +26,8 @@ public class App_Model extends Model {
 	private Socket socket;
 	private OutputStreamWriter socketOut;
 	private BufferedReader inReader;
+    public SimpleBooleanProperty successfullAnswer= new SimpleBooleanProperty();
+
 
 	public App_Model() {
 
@@ -61,6 +64,21 @@ public class App_Model extends Model {
 	}
 
 	public boolean createChatroom(String text, boolean selected) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean createAccount(String name, String password) {
+		// TODO Auto-generated method stub
+		return null != null;
+	}
+
+	public boolean login(String name, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean logout(String name, String password) {
 		// TODO Auto-generated method stub
 		return false;
 	}

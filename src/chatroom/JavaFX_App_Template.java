@@ -104,7 +104,7 @@ public class JavaFX_App_Template extends Application {
         splashView.stop();
         splashView = null;
 
-        view.start();
+ //       view.start();
     }
 
     /**
@@ -121,7 +121,7 @@ public class JavaFX_App_Template extends Application {
         serviceLocator.getConfiguration().save();
         if (view != null) {
             // Make the view invisible
-            view.stop();
+  //          view.stop();
         }
 
         // More cleanup code as needed

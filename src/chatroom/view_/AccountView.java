@@ -80,7 +80,7 @@ public class AccountView extends Stage {
 	public void failedToCreateAccount() {
 		Label failedLbl = new Label("Failed to create Account");
 		failedLbl.setTextFill(Color.RED);
-		pane.add(failedLbl, 0, 4);
+		pane.add(failedLbl, 2, 4);
 		this.sizeToScene();
 	}
 
