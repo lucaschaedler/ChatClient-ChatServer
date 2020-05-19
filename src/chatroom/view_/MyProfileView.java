@@ -66,6 +66,7 @@ public class MyProfileView extends Stage{
 		this.centerOnScreen();
 		this.resizableProperty().setValue(Boolean.FALSE); //no maximizing allowed
 		this.show();
+		this.setAlwaysOnTop(true);
 		
 		updateTexts();
 	}
