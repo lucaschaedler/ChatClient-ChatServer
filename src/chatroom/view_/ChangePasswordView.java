@@ -5,6 +5,7 @@ import chatroom.ServiceLocator;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -38,6 +39,8 @@ public class ChangePasswordView extends Stage {
 		this.setTitle("Change Password");
 		this.show();
 		this.setAlwaysOnTop(true);
+		
+		updateTexts();
 	}
 	
 	public void failedToChangePassword() {
@@ -55,5 +58,9 @@ public class ChangePasswordView extends Stage {
 	       newPasswordLbl.setText(t.getString("changepasswordview.label.oldpasswordlbl"));
 	       
 	    }
+
+	public Button getConfirmBtn() {
+		return confirmBtn;
+	}
 
 }

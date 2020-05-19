@@ -29,6 +29,9 @@ public class App_View extends View<App_Model> {
 	public UserListView userListView;
 	public UserPanel userPanel;
 	public BorderPane root;
+	public MyProfileView myProfileView;
+	public ChangePasswordView changePasswordView;
+	public BlockListView blockListView;
 
 	public App_View(Stage stage, App_Model model) {
 		super(stage, model);
@@ -86,6 +89,18 @@ public class App_View extends View<App_Model> {
 
 	public Button getConfirmCreateAccountBtn() {
 		return accountView.getConfirmCreateAccountBtn();
+	}
+
+	public void createMyProfilView() {
+		myProfileView = new MyProfileView();
+	}
+
+	public void createChangePasswordView() {
+		changePasswordView = new ChangePasswordView();
+	}
+
+	public void createBlockListView() {
+		blockListView = new BlockListView();		
 	}
 
 	
