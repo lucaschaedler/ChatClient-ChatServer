@@ -36,7 +36,6 @@ public class ChangePasswordView extends Stage {
 
 		Scene scene = new Scene(pane, 450, 120);
 		this.setScene(scene);
-		this.setTitle("Change Password");
 		this.show();
 		this.setAlwaysOnTop(true);
 		
@@ -56,6 +55,7 @@ public class ChangePasswordView extends Stage {
 	       confirmBtn.setText(t.getString("loginview.button.confirmbtn"));
 	       oldPasswordLbl.setText(t.getString("changepasswordview.label.newpasswordlbl"));
 	       newPasswordLbl.setText(t.getString("changepasswordview.label.oldpasswordlbl"));
+	       this.setTitle(t.getString("changepasswordview.titel"));
 	       
 	    }
 

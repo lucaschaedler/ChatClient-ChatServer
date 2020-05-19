@@ -65,8 +65,6 @@ public class MyProfileView extends Stage{
 		this.sizeToScene();
 		this.centerOnScreen();
 		this.resizableProperty().setValue(Boolean.FALSE); //no maximizing allowed
-		//this.getIcons().add(msn);
-		this.setTitle("Chat Messenger");
 		this.show();
 		
 		updateTexts();
@@ -79,5 +77,6 @@ public class MyProfileView extends Stage{
 		memberSinceLbl1.setText(t.getString("myprofileview.label.membersince"));
 		statusLbl1.setText(t.getString("myprofileview.label.status"));
 		closeBtn.setText(t.getString("myprofileview.button.close"));
+		this.setTitle(t.getString("myprofileview.titel"));
 	}
 }

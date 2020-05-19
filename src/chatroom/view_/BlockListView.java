@@ -35,7 +35,6 @@ public class BlockListView extends Stage {
 
 		Scene scene = new Scene(pane, 300, 400);
 		this.setScene(scene);
-		this.setTitle("Block List");
 		this.show();
 		this.setAlwaysOnTop(true);
 		
@@ -46,7 +45,7 @@ public class BlockListView extends Stage {
 	       Translator t = ServiceLocator.getServiceLocator().getTranslator(); 
 	       
 	       unblockBtn.setText(t.getString("blocklistview.button.unblockbtn"));
-
+	       this.setTitle(t.getString("blocklistview.titel"));
 
 	       
 	    }

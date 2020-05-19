@@ -57,6 +57,7 @@ public class CreateNewChatroomView extends Stage {
 	       chatroomNameLbl.setText(t.getString("button.menu.createChatroomFrame.chatroomNameLbl"));
 	       isPublicLbl.setText(t.getString("button.menu.createChatroomFrame.isPublicLbl"));
 	       createNewRoomBtn.setText(t.getString("button.menu.createChatroomFrame.createnewroombtn"));
+	       this.setTitle(t.getString("createnewchatroomview.titel"));
 	       
 	       
 	    }

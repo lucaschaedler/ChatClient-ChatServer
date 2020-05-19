@@ -36,7 +36,6 @@ public class LoginView extends Stage {
 		pane.setVgap(5);
 
 		Scene scene = new Scene(pane);
-		this.setTitle("Login");
 		this.setScene(scene);
 		this.show();
 		this.setAlwaysOnTop(true);
@@ -83,7 +82,7 @@ public class LoginView extends Stage {
 		passwordLbl.setText(t.getString("loginview.label.passswordlbl"));
 		confirmBtn.setText(t.getString("loginview.button.confirmbtn"));
 		createAccountBtn.setText(t.getString("loginview.button.createaccountbtn"));
-
+		this.setTitle(t.getString("loginview.titel"));
 	}
 
 }
