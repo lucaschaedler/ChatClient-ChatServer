@@ -17,6 +17,7 @@ public class ChatMenu extends MenuBar {
 	public Menu languageMenu;
 	public MenuItem refreshItem, exitItem, createAccountItem, loginItem, myProfileItem, changePasswordItem, logoutItem,
 			blockListItem, deleteAccountItem, deLanguageItem, enLanguageItem;
+	public Menu userName;
 
 	public ChatMenu() {
 		fileMenu = new Menu();
@@ -38,6 +39,12 @@ public class ChatMenu extends MenuBar {
 		preferencesMenu.getItems().addAll(languageMenu, blockListItem, deleteAccountItem);
 		this.getMenus().addAll(fileMenu, profileMenu, preferencesMenu);
 
+		Region space = new Region();
+		userName = new Menu("-");
+		userName.setDisable(false);
+		this.getChildren().add(space);
+		this.getMenus().add(userName);
+		userName.setId("Userstatus");
 		updateTexts();
 	}
 
@@ -72,11 +79,7 @@ public class ChatMenu extends MenuBar {
 	}
 
 	public void showUser(String name) {
-		Region space = new Region();
-		Menu userName = new Menu(name + " is logged in.");
-		userName.setDisable(true);
-		this.getChildren().add(space);
-		this.getMenus().add(userName);
+		userName.setText(name + " is logged in");
 	}
 
 }

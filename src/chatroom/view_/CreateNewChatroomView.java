@@ -19,6 +19,7 @@ public class CreateNewChatroomView extends Stage {
 	private GridPane root;
 	public Label chatroomNameLbl;
 	public Label isPublicLbl;
+	public Label failedLbl;
 	
 	public CreateNewChatroomView(){
 		root = new GridPane();
@@ -40,23 +41,31 @@ public class CreateNewChatroomView extends Stage {
 		this.resizableProperty().setValue(Boolean.FALSE);
 		this.show();
 		this.setAlwaysOnTop(true);
+		updateTexts();
 		
 	}
 	
 	public void failedToCreateChatroom() {
-		Label failedLbl = new Label ("Failed to create Chatroom");
+		failedLbl = new Label ("Failed to create Chatroom");
 		failedLbl.setTextFill(Color.RED);
 		root.add(failedLbl, 0, 3);
 		this.sizeToScene();
+		updateTexts();
 	}
 	
 	 public void updateTexts() {
 	       Translator t = ServiceLocator.getServiceLocator().getTranslator(); 
 	       
 	        // The menu entries here
-	       chatroomNameLbl.setText(t.getString("button.menu.createChatroomFrame.chatroomNameLbl"));
-	       isPublicLbl.setText(t.getString("button.menu.createChatroomFrame.isPublicLbl"));
-	       createNewRoomBtn.setText(t.getString("button.menu.createChatroomFrame.createnewroombtn"));
+	       chatroomNameLbl.setText(t.getString("createnewchatroomview.label.chatroomnamelbl"));
+	       isPublicLbl.setText(t.getString("createnewchatroomview.label.ispubliclbl"));
+	       createNewRoomBtn.setText(t.getString("createnewchatroomview.button.createnewroombtn"));
+	       try {
+	    	   failedLbl.setText(t.getString("createnewchatrommview.label.failedlbl"));
+	       }catch(Exception e) {
+	    	   //nullpointer when lbl doest exist
+	       }
+	       
 	       this.setTitle(t.getString("createnewchatroomview.titel"));
 	       
 	       

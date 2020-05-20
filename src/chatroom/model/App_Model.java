@@ -106,7 +106,7 @@ public class App_Model extends Model {
 			if (successfullAnswer.get()) {
 				isOnline = true;
 				currentUser = name;
-				securePIN = data.get(2);//token from server
+				securePIN = data.get(3);//token from server
 				this.currentPassword = password;
 				serviceLocator.getLogger().info("User: " + name + " logged in.");
 			} else {
@@ -195,7 +195,7 @@ public class App_Model extends Model {
 	public boolean changePassword(String oldPassword, String newPassword) {
 		if (oldPassword.equals(currentPassword) && isOnline) {
 			try {
-				socketOut.write("ChangePassword|" + securePIN + "|" + newPassword + "\n");
+				socketOut.write("ChangePassword|" + securePIN + "|" + newPassword +"\n");
 				socketOut.flush();
 				Thread.sleep(500);
 				if (successfullAnswer.get()) {
