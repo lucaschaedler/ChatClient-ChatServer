@@ -247,8 +247,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		view.createNewChatroomView.createNewRoomBtn.setOnAction(e -> {
 			if (model.createChatroom(view.createNewChatroomView.chatroomNameTxtF.getText(),
 					view.createNewChatroomView.isPublicCheckBox.isSelected())) {
-				view.createChatroomView();
 				listChatrooms(e);
+				view.createNewChatroomView.stop();
 			} else {
 				view.createNewChatroomView.failedToCreateChatroom();
 			}
@@ -264,13 +264,13 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			} catch (InterruptedException ex) {
 				ex.printStackTrace();
 			}
-			view.roomListView.actualizeChatrooms(model.rooms);
+			view.roomListScrollPane.actualizeChatrooms(model.rooms);
 
 		}
 	}
 
 	private void joinChatroom() {
-		model.joinSelectedChatroom(view.roomListView.roomListView.getSelectionModel().getSelectedItem());
+		model.joinSelectedChatroom(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem());
 	}
 
 	private void sendMessage() {

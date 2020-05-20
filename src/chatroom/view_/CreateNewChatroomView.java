@@ -69,4 +69,12 @@ public class CreateNewChatroomView extends Stage {
 		this.setTitle(t.getString("createnewchatroomview.titel"));
 
 	}
+
+	public void start() {
+		this.show();
+	}
+
+	public void stop() {
+		this.close();
+	}
 }
