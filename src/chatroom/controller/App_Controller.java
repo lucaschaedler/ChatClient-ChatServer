@@ -2,6 +2,7 @@ package chatroom.controller;
 
 import java.util.Locale;
 import java.util.Optional;
+
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.abstractClasses.Controller;
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.commonClasses.Translator;
 import chatroom.ServiceLocator;
@@ -126,6 +127,13 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		view.userPanel.sendMessageBtn.setOnAction(e -> {
 			sendMessage();
 		});
+		
+		view.myProfileView.closeBtn.setOnAction(e -> {
+			closeView();
+		});
+		
+		
+
 
 		ServiceLocator sl = ServiceLocator.getServiceLocator();
 		for (Locale locale : sl.getLocales()) {
@@ -173,7 +181,12 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			});
 		}
 
+
 	}// konstruktor
+
+	private void closeView() {
+		view.myProfileView.stop();
+	}
 
 	private void createBlockListView() {
 		view.createBlockListView();

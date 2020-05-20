@@ -80,4 +80,7 @@ public class MyProfileView extends Stage{
 		closeBtn.setText(t.getString("myprofileview.button.close"));
 		this.setTitle(t.getString("myprofileview.titel"));
 	}
+	public void stop() {
+		this.close();
+	}
 }
