@@ -54,9 +54,14 @@ public class ChangePasswordView extends Stage {
 	       Translator t = ServiceLocator.getServiceLocator().getTranslator(); 
 	       
 	       confirmBtn.setText(t.getString("loginview.button.confirmbtn"));
-	       oldPasswordLbl.setText(t.getString("changepasswordview.label.newpasswordlbl"));
-	       newPasswordLbl.setText(t.getString("changepasswordview.label.oldpasswordlbl"));
-	       failedLbl.setText(t.getString("changepasswordview.label.failedlbl"));
+	       oldPasswordLbl.setText(t.getString("changepasswordview.label.oldpasswordlbl"));
+	       newPasswordLbl.setText(t.getString("changepasswordview.label.newpasswordlbl"));
+	       try {
+	    	   failedLbl.setText(t.getString("changepasswordview.label.failedlbl"));   
+	       }catch(Exception e) {
+	    	  // ignore nullpointer when label doesnt exist
+	       }
+	      
 	       this.setTitle(t.getString("changepasswordview.titel"));
 	       
 	    }

@@ -103,10 +103,10 @@ public class App_Model extends Model {
 			Thread.sleep(500);
 			ArrayList<String> data = new ArrayList<String>();
 			data = newData;
-			if (successfullAnswer.get()) {// bei diesem wurde was geändert auch serverseitig
+			if (successfullAnswer.get()) {
 				isOnline = true;
 				currentUser = name;
-				securePIN = data.get(2);
+				securePIN = data.get(2);//token from server
 				this.currentPassword = password;
 				serviceLocator.getLogger().info("User: " + name + " logged in.");
 			} else {
