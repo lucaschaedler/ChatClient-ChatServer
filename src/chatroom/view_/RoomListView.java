@@ -1,5 +1,7 @@
 package chatroom.view_;
 
+import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -19,5 +21,10 @@ public class RoomListView extends ScrollPane {
 		this.setContent(roomListView);
 		this.setPadding(new Insets(10));
 		this.setMaxWidth(180);
+	}
+
+	public void actualizeChatrooms(ArrayList<String> rooms) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -28,7 +28,7 @@ public class App_View extends View<App_Model> {
 	public UserListView userListView;
 	public UserPanel userPanel;
 	public BorderPane root;
-	public CreateNewChatroomView createChatRoomView;
+	public CreateNewChatroomView createNewChatroomView;
 	public MyProfileView myProfileView;
 	public ChangePasswordView changePasswordView;
 	public BlockListView blockListView;
@@ -108,7 +108,7 @@ public class App_View extends View<App_Model> {
 	}
 
 	public void createChatroomView() {
-		createChatRoomView = new CreateNewChatroomView();
+		createNewChatroomView = new CreateNewChatroomView();
 	}
 
 	public void createMyProfilView() {
@@ -124,7 +124,7 @@ public class App_View extends View<App_Model> {
 	}
 
 	public void createNewChatroomView() {
-		createChatRoomView = new CreateNewChatroomView();
+		createNewChatroomView = new CreateNewChatroomView();
 
 	}
 

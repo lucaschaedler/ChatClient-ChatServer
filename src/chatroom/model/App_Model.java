@@ -30,6 +30,8 @@ public class App_Model extends Model {
 	public String currentUser;
 	public ArrayList<String> newData = new ArrayList<String>();
 	public SimpleBooleanProperty successfullAnswer = new SimpleBooleanProperty();
+	
+	public ArrayList <String> rooms = new ArrayList<String>();
 
 	private Socket socket;
 	private OutputStreamWriter socketOut;
@@ -141,6 +143,12 @@ public class App_Model extends Model {
 	public boolean changePassword(String text, String text2) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+
+	public void listChatrooms() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

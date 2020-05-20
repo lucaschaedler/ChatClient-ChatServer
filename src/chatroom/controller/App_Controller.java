@@ -8,6 +8,7 @@ import chatroom.ServiceLocator;
 import chatroom.model.App_Model;
 import chatroom.view_.App_View;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -231,13 +232,29 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	private void addNewRoom() {
 		view.createChatroomView();
-		view.createChatRoomView.createNewRoomBtn.setOnAction(e -> {
-			if (model.createChatroom(view.createChatRoomView.chatroomNameTxtF.getText(),
-					view.createChatRoomView.isPublicCheckBox.isSelected())) {
-
+		view.createNewChatroomView.createNewRoomBtn.setOnAction(e -> {
+			if (model.createChatroom(view.createNewChatroomView.chatroomNameTxtF.getText(),
+					view.createNewChatroomView.isPublicCheckBox.isSelected())) {
+				view.createChatroomView();
+				listChatrooms(e);
+			} else {
+				view.createNewChatroomView.failedToCreateChatroom();
 			}
 		});
 
+	}
+
+	private void listChatrooms(ActionEvent e) {
+		for (int i = 0; i < 2; i++) {
+			model.listChatrooms();
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException ex) {
+				ex.printStackTrace();
+			}
+			view.roomListView.actualizeChatrooms(model.rooms);
+
+		}
 	}
 
 	private void joinChatroom() {
