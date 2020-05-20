@@ -54,7 +54,7 @@ public class AccountView extends Stage {
 	}
 
 	public void stop() {
-		this.hide();
+		this.close();
 	}
 
 	public void closeButtonAction() {

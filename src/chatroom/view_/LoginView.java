@@ -52,7 +52,7 @@ public class LoginView extends Stage {
 	}
 
 	public void stop() {
-		this.hide();
+		this.close();
 	}
 
 	public String getUserName() {

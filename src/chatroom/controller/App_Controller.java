@@ -127,11 +127,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		view.userPanel.sendMessageBtn.setOnAction(e -> {
 			sendMessage();
 		});
-		
-		
-		
-		
-
 
 		ServiceLocator sl = ServiceLocator.getServiceLocator();
 		for (Locale locale : sl.getLocales()) {
@@ -175,10 +170,14 @@ public class App_Controller extends Controller<App_Model, App_View> {
 				} catch (NullPointerException e) {
 					// ignore happen when view isn't open
 				}
+				try {
+					view.createNewChatroomView.updateTexts();
+				} catch (NullPointerException e) {
+					// ignore happen when view isn't open
+				}
 
 			});
 		}
-
 
 	}// konstruktor
 
