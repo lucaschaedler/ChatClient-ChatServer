@@ -16,6 +16,7 @@ public class ChangePasswordView extends Stage {
 	public PasswordField oldPassword, newPassword;
 	public Button confirmBtn;
 	public GridPane pane;
+	public Label failedLbl;
 
 	public ChangePasswordView() {
 		pane = new GridPane();
@@ -42,10 +43,11 @@ public class ChangePasswordView extends Stage {
 	}
 	
 	public void failedToChangePassword() {
-		Label failedLbl = new Label ("Failed to change Password");
+		failedLbl = new Label ("Failed to change Password");
 		failedLbl.setTextFill(Color.RED);
-		pane.add(failedLbl, 1, 4);
+		pane.add(failedLbl, 2, 3);
 		this.sizeToScene();
+		updateTexts();
 	}
 	
 	 public void updateTexts() {
@@ -54,6 +56,7 @@ public class ChangePasswordView extends Stage {
 	       confirmBtn.setText(t.getString("loginview.button.confirmbtn"));
 	       oldPasswordLbl.setText(t.getString("changepasswordview.label.newpasswordlbl"));
 	       newPasswordLbl.setText(t.getString("changepasswordview.label.oldpasswordlbl"));
+	       failedLbl.setText(t.getString("changepasswordview.label.failedlbl"));
 	       this.setTitle(t.getString("changepasswordview.titel"));
 	       
 	    }

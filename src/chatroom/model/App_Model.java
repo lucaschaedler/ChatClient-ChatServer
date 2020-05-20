@@ -30,8 +30,9 @@ public class App_Model extends Model {
 	public String currentUser;
 	public ArrayList<String> newData = new ArrayList<String>();
 	public SimpleBooleanProperty successfullAnswer = new SimpleBooleanProperty();
-	
-	public ArrayList <String> rooms = new ArrayList<String>();
+	private boolean isOnline = false;
+	public ArrayList<String> rooms = new ArrayList<String>();
+	private String currentPassword;
 
 	private Socket socket;
 	private OutputStreamWriter socketOut;
@@ -77,18 +78,71 @@ public class App_Model extends Model {
 	}
 
 	public boolean createAccount(String name, String password) {
-		// TODO Auto-generated method stub
-		return null != null;
+		boolean createdAccount = false;
+		try {
+		socketOut.write("CreateLogin|" + name + "|" + password +"\n");
+		socketOut.flush();
+		Thread.sleep(500);
+		if(successfullAnswer.get()) {
+		serviceLocator.getLogger().info("User " + name + " created an account.");
+		} else {
+		serviceLocator.getLogger().info("User: " + name + " failed to create an account.");
+		}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return successfullAnswer.get();
 	}
 
 	public boolean login(String name, String password) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		try {
+			socketOut.write("Login|" + name + "|" + password+"\n");
+			socketOut.flush();
+			Thread.sleep(500);
+			ArrayList <String> data = new ArrayList <String>();
+			data = newData;
+			if(successfullAnswer.get()) {// bei diesem wurde was geändert auch serverseitig
+			isOnline = true;
+			currentUser = name;
+			securePIN = data.get(2);
+			this.currentPassword = password;
+			serviceLocator.getLogger().info("User: " + name + " logged in.");
+			} else {
+			serviceLocator.getLogger().info("User: " + name + " failed to login.");
+			}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			return successfullAnswer.get();
 	}
 
 	public boolean logout(String name, String password) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean isLoggedOut = false;
+		try {
+		socketOut.write("Logout|" + name + "|" + password+"\n");
+		socketOut.flush();
+		Thread.sleep(500);
+		if(successfullAnswer.get()) {
+		serviceLocator.getLogger().info("User " + name + " is now logged out.");
+		} else {
+		serviceLocator.getLogger().info("User: " + name + " failed to do logout.");
+		}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.isOnline = false;
+		return successfullAnswer.get();
 	}
 
 	public void sendAMessage(String messageTxt) {
@@ -140,15 +194,33 @@ public class App_Model extends Model {
 
 	}
 
-	public boolean changePassword(String text, String text2) {
-		// TODO Auto-generated method stub
+	public boolean changePassword(String oldPassword, String newPassword) {
+		if (oldPassword.equals(currentPassword) && isOnline) {
+			try {
+				socketOut.write("ChangePassword|" + securePIN + "|" + newPassword + "\n");
+				socketOut.flush();
+				Thread.sleep(500);
+				if (successfullAnswer.get()) {
+					serviceLocator.getLogger().info("User changed password");
+					currentPassword = newPassword;
+				} else {
+					serviceLocator.getLogger().info("User failed to change the password");
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return successfullAnswer.get();
+		} else	
+		serviceLocator.getLogger().info("OldPassword isnt corret");
 		return false;
 	}
 
-
 	public void listChatrooms() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
