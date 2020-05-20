@@ -128,9 +128,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			sendMessage();
 		});
 		
-		view.myProfileView.closeBtn.setOnAction(e -> {
-			closeView();
-		});
+		
 		
 		
 
@@ -204,6 +202,9 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	private void createMyProfilView() {
 		view.createMyProfilView();
+		view.myProfileView.closeBtn.setOnAction(e -> {
+			closeView();
+		});
 	}
 
 	private void createAccountView() {
