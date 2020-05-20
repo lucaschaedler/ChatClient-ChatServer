@@ -14,6 +14,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.KeyCode;
 import javafx.stage.WindowEvent;
 
 /**
@@ -132,6 +133,12 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 		view.userPanel.sendMessageBtn.setOnAction(e -> {
 			sendMessage();
+		});
+
+		view.userPanel.writeTextArea.setOnKeyTyped(e -> {
+			if (e.getSource() == KeyCode.ENTER) {
+				sendMessage();
+			}
 		});
 
 		ServiceLocator sl = ServiceLocator.getServiceLocator();
@@ -278,14 +285,14 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	private void joinChatroom() {
 		if (view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem() != null) {
 			model.joinSelectedChatroom(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem());
-			view.userPanel.changeChatroomName(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem());
+			view.userPanel
+					.changeChatroomName(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem());
 			view.chatScreenView.removeAllMessages();
 			listChatroomUser();
 		}
 	}
 
 	private void listChatroomUser() {
-	
 
 	}
 
