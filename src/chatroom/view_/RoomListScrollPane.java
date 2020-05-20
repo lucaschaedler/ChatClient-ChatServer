@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 
@@ -29,4 +30,6 @@ public class RoomListScrollPane extends ScrollPane {
 		this.setContent(roomListView);
 		
 	}
+		
+	
 }

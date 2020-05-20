@@ -4,6 +4,7 @@ import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.commonClasses.Translator;
 import chatroom.ServiceLocator;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
@@ -16,7 +17,8 @@ public class UserPanel extends HBox {
 	public Button addRoomBtn, joinRoomBtn, blockUserBtn, sendMessageBtn;
 	public ScrollPane writeScrollPane;
 	public TextArea writeTextArea;
-
+	public Label chatroomName;
+	
 	public UserPanel() {
 		addRoomBtn = new Button("Add Room");
 		joinRoomBtn = new Button("Join Room");
@@ -24,6 +26,7 @@ public class UserPanel extends HBox {
 		sendMessageBtn = new Button("Send");
 		writeScrollPane = new ScrollPane();
 		writeTextArea = new TextArea();
+		chatroomName = new Label();
 		
 		// MessageBox
 		writeTextArea.setText("--->>>Nachrichten schreiben<<<---");
@@ -43,7 +46,7 @@ public class UserPanel extends HBox {
 		joinRoomBtn.setMinSize(100, 60);
 		blockUserBtn.setMinSize(100, 60);
 		sendMessageBtn.setMinSize(100, 60);
-		buttonsBoxLeft.getChildren().addAll(addRoomBtn, joinRoomBtn);
+		buttonsBoxLeft.getChildren().addAll(addRoomBtn, joinRoomBtn,chatroomName);
 		buttonsBoxLeft.setSpacing(5);
 		buttonsBoxLeft.setPadding(new Insets(10));
 		buttonsBoxRight.getChildren().addAll(blockUserBtn, sendMessageBtn);
@@ -65,5 +68,9 @@ public class UserPanel extends HBox {
 		joinRoomBtn.setText(t.getString("mainview.button.joinroom"));
 		blockUserBtn.setText(t.getString("mainview.button.blockuser"));
 		sendMessageBtn.setText(t.getString("mainview.button.sendmessage"));
+	}
+
+	public void changeChatroomName(String selectedItem) {
+		chatroomName.setText("In Chatroom " + selectedItem);		
 	}
 }

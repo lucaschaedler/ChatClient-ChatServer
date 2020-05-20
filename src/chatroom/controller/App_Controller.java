@@ -68,12 +68,12 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		serviceLocator = ServiceLocator.getServiceLocator();
 		serviceLocator.getLogger().info("Application controller initialized");
 
-		model.message.addListener((observable, oldValue, newValue)->{
-			Platform.runLater(()->{
-    		view.chatScreenView.createNewMessageLine(newValue);
+		model.message.addListener((observable, oldValue, newValue) -> {
+			Platform.runLater(() -> {
+				view.chatScreenView.createNewMessageLine(newValue);
 			});
-    	});
-		
+		});
+
 		view.getLoginItem().setOnAction(e -> {
 			createLoginView();
 		});
@@ -276,7 +276,17 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void joinChatroom() {
-		model.joinSelectedChatroom(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem());
+		if (view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem() != null) {
+			model.joinSelectedChatroom(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem());
+			view.userPanel.changeChatroomName(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem());
+			view.chatScreenView.removeAllMessages();
+			listChatroomUser();
+		}
+	}
+
+	private void listChatroomUser() {
+	
+
 	}
 
 	private void sendMessage() {
