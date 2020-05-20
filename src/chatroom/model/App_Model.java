@@ -26,7 +26,7 @@ public class App_Model extends Model {
 
 	private final String IP_ADRESS = "147.86.8.31";
 	private final int PORTNUMBER = 50001;
-	private String securePIN;
+	private String token;
 	public String currentChatroom;
 	public String currentUser;
 	public ArrayList<String> newData = new ArrayList<String>();
@@ -106,7 +106,7 @@ public class App_Model extends Model {
 			if (successfullAnswer.get()) {
 				isOnline = true;
 				currentUser = name;
-				securePIN = data.get(2);//token from server
+				token = data.get(2);//token from server
 				this.currentPassword = password;
 				serviceLocator.getLogger().info("User: " + name + " logged in.");
 			} else {
@@ -149,7 +149,7 @@ public class App_Model extends Model {
 			@Override
 			public void run() {
 				try {
-					socketOut.write("SendMessage|" + securePIN + "|" + currentChatroom + "|" + messageTxt + "\n");
+					socketOut.write("SendMessage|" + token + "|" + currentChatroom + "|" + messageTxt + "\n");
 					socketOut.flush();
 					Thread.sleep(500);
 					ArrayList<String> data = newData;
@@ -173,7 +173,7 @@ public class App_Model extends Model {
 
 	public boolean joinSelectedChatroom(String chatroom) {
 		try {
-			socketOut.write("JoinChatroom|" + securePIN + "|" + chatroom + "|" + currentUser + "\n");
+			socketOut.write("JoinChatroom|" + token + "|" + chatroom + "|" + currentUser + "\n");
 			socketOut.flush();
 			Thread.sleep(900);
 			if (successfullAnswer.get() && !(chatroom.equals("null"))) {
@@ -195,7 +195,7 @@ public class App_Model extends Model {
 	public boolean changePassword(String oldPassword, String newPassword) {
 		if (oldPassword.equals(currentPassword) && isOnline) {
 			try {
-				socketOut.write("ChangePassword|" + securePIN + "|" + newPassword + "\n");
+				socketOut.write("ChangePassword|" + token + "|" + newPassword + "\n");
 				socketOut.flush();
 				Thread.sleep(500);
 				if (successfullAnswer.get()) {
@@ -217,7 +217,30 @@ public class App_Model extends Model {
 	}
 
 	public void listChatrooms() {
-		// TODO Auto-generated method stub
+		Thread thread = new Thread (new Runnable(){
+			
+			@Override
+			public void run() {
+				try {
+				socketOut.write("ListChatrooms|" + token + "\n");
+				socketOut.flush();
+				if (successfullAnswer.get()) {
+				rooms = newData;
+				rooms.remove(0);
+				rooms.remove(0);
+				}
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+			
+	}
+				
+);
+thread.setDaemon(true);
+thread.start();
 
 	}
 	

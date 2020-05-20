@@ -8,13 +8,14 @@ import javafx.geometry.Insets;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 
-public class RoomListView extends ScrollPane {
+public class RoomListScrollPane extends ScrollPane {
 
 	public ListView<String> roomListView;
-	public ObservableList<String> chatRooms = FXCollections.observableArrayList("gayroom", "playaroom", "girlsroom",
-			"shippinoroom");
 
-	public RoomListView(){
+	public RoomListScrollPane() {
+		ArrayList<String> names = new ArrayList<>();
+		ObservableList<String> chatRooms = FXCollections.observableArrayList(names);
+		
 		roomListView = new ListView<>();
 		roomListView.setItems(chatRooms);
 		roomListView.setMaxWidth(160);
@@ -24,7 +25,8 @@ public class RoomListView extends ScrollPane {
 	}
 
 	public void actualizeChatrooms(ArrayList<String> rooms) {
-		// TODO Auto-generated method stub
+		roomListView = new ListView<String>(FXCollections.observableArrayList(rooms));
+		this.setContent(roomListView);
 		
 	}
 }

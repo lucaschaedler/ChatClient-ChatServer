@@ -23,9 +23,9 @@ public class App_View extends View<App_Model> {
 	public LoginView loginView;
 	public AccountView accountView;
 	public ChatMenu chatMenu;
-	public RoomListView roomListView;
+	public RoomListScrollPane roomListView;
 	public ChatScreenView chatScreenView;
-	public UserListView userListView;
+	public UserListScrollPane userListView;
 	public UserPanel userPanel;
 	public BorderPane root;
 	public CreateNewChatroomView createNewChatroomView;
@@ -48,9 +48,9 @@ public class App_View extends View<App_Model> {
 	@Override
 	protected Scene create_GUI() {
 		chatMenu = new ChatMenu();
-		roomListView = new RoomListView();
+		roomListView = new RoomListScrollPane();
 		chatScreenView = new ChatScreenView();
-		userListView = new UserListView();
+		userListView = new UserListScrollPane();
 		userPanel = new UserPanel();
 		root = new BorderPane();
 		root.setTop(chatMenu);
