@@ -214,7 +214,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		} catch (Exception e) {
 			// falls keine Login offen ist ignorieren
 		}
-		view.start(); // Test um main gui zu öffenen ohne korrektes login
 		view.getConfirmCreateAccountBtn().setOnAction(e -> {
 			createAccountOnServer();
 		});
@@ -316,8 +315,16 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void refresh() {
-		// TODO Auto-generated method stub
-
+//		for (int i = 0; i < 2; i++) {
+//			model.listChatrooms();
+//			try {
+//				Thread.sleep(100);
+//			} catch (InterruptedException e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			}
+//			view.roomListView.actualizeChatrooms(model.rooms);
+//		}
 	}
 
 	private void doLogin() {

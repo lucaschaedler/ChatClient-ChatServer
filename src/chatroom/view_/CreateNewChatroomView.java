@@ -20,21 +20,21 @@ public class CreateNewChatroomView extends Stage {
 	public Label chatroomNameLbl;
 	public Label isPublicLbl;
 	public Label failedLbl;
-	
-	public CreateNewChatroomView(){
+
+	public CreateNewChatroomView() {
 		root = new GridPane();
 		chatroomNameLbl = new Label("Chatroom Name");
-		isPublicLbl = new Label ("Public Room");
+		isPublicLbl = new Label("Public Room");
 		chatroomNameTxtF = new TextField();
 		isPublicCheckBox = new CheckBox();
 		createNewRoomBtn = new Button("Create Room");
-		
-		root.add(chatroomNameLbl, 0,0);
-		root.add(chatroomNameTxtF, 1,0);
+
+		root.add(chatroomNameLbl, 0, 0);
+		root.add(chatroomNameTxtF, 1, 0);
 		root.add(isPublicLbl, 0, 1);
-		root.add(isPublicCheckBox, 1,1);
-		root.add(createNewRoomBtn, 0,2);
-		
+		root.add(isPublicCheckBox, 1, 1);
+		root.add(createNewRoomBtn, 0, 2);
+
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("mainview.css").toExternalForm());
 		this.setScene(scene);
@@ -42,32 +42,31 @@ public class CreateNewChatroomView extends Stage {
 		this.show();
 		this.setAlwaysOnTop(true);
 		updateTexts();
-		
+
 	}
-	
+
 	public void failedToCreateChatroom() {
-		failedLbl = new Label ("Failed to create Chatroom");
+		failedLbl = new Label("Failed to create Chatroom");
 		failedLbl.setTextFill(Color.RED);
 		root.add(failedLbl, 0, 3);
 		this.sizeToScene();
 		updateTexts();
 	}
-	
-	 public void updateTexts() {
-	       Translator t = ServiceLocator.getServiceLocator().getTranslator(); 
-	       
-	        // The menu entries here
-	       chatroomNameLbl.setText(t.getString("createnewchatroomview.label.chatroomnamelbl"));
-	       isPublicLbl.setText(t.getString("createnewchatroomview.label.ispubliclbl"));
-	       createNewRoomBtn.setText(t.getString("createnewchatroomview.button.createnewroombtn"));
-	       try {
-	    	   failedLbl.setText(t.getString("createnewchatrommview.label.failedlbl"));
-	       }catch(Exception e) {
-	    	   //nullpointer when lbl doest exist
-	       }
-	       
-	       this.setTitle(t.getString("createnewchatroomview.titel"));
-	       
-	       
-	    }
+
+	public void updateTexts() {
+		Translator t = ServiceLocator.getServiceLocator().getTranslator();
+
+		// The menu entries here
+		chatroomNameLbl.setText(t.getString("createnewchatroomview.label.chatroomnamelbl"));
+		isPublicLbl.setText(t.getString("createnewchatroomview.label.ispubliclbl"));
+		createNewRoomBtn.setText(t.getString("createnewchatroomview.button.createnewroombtn"));
+		try {
+			failedLbl.setText(t.getString("createnewchatrommview.label.failedlbl"));
+		} catch (Exception e) {
+			// nullpointer when lbl doest exist
+		}
+
+		this.setTitle(t.getString("createnewchatroomview.titel"));
+
+	}
 }
