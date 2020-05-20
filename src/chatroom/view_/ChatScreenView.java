@@ -23,7 +23,7 @@ public class ChatScreenView extends ScrollPane {
 	}
 
 	public void createNewMessageLine(String message) {
-		screenTextArea.setText(message);
+		screenTextArea.appendText(message + "\n");
 		this.setContent(screenTextArea);
 	}
 	
