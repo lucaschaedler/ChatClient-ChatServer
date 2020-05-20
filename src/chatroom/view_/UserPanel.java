@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -16,7 +17,7 @@ public class UserPanel extends HBox {
 	private VBox buttonsBoxRight = new VBox();
 	public Button addRoomBtn, joinRoomBtn, blockUserBtn, sendMessageBtn;
 	public ScrollPane writeScrollPane;
-	public TextArea writeTextArea;
+	public TextField writeTextArea;
 	public Label chatroomName;
 	
 	public UserPanel() {
@@ -25,13 +26,14 @@ public class UserPanel extends HBox {
 		blockUserBtn = new Button("Block");
 		sendMessageBtn = new Button("Send");
 		writeScrollPane = new ScrollPane();
-		writeTextArea = new TextArea();
+		writeTextArea = new TextField();
 		chatroomName = new Label();
 		
 		// MessageBox
 		writeTextArea.setText("--->>>Nachrichten schreiben<<<---");
 		writeTextArea.setMinWidth(700);
-		writeTextArea.setMaxHeight(125);
+		writeTextArea.setPrefHeight(125);
+		//writeTextArea.setMaxHeight(125);
 		writeTextArea.setId("writeArea"); // CSS
 		writeTextArea.setOnMouseClicked((event) -> {
 			writeTextArea.setText("");

@@ -135,10 +135,9 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			sendMessage();
 		});
 
-		view.userPanel.writeTextArea.setOnKeyTyped(e -> {
-			if (e.getSource() == KeyCode.ENTER) {
+		view.userPanel.writeTextArea.setOnAction(e -> {
 				sendMessage();
-			}
+			
 		});
 
 		ServiceLocator sl = ServiceLocator.getServiceLocator();
