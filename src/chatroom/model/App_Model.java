@@ -70,9 +70,23 @@ public class App_Model extends Model {
 		return connection;
 	}
 
-	public boolean createChatroom(String text, boolean selected) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean createChatroom(String name, boolean isPublic) {
+		try {
+			socketOut.write("CreateChatroom|" + token + "|" + name+ "|" + isPublic +"\n");
+			socketOut.flush();
+			Thread.sleep(900);
+			if(successfullAnswer.get()) {
+			serviceLocator.getLogger().info("User created the Chatroom "+ name);
+			} else {
+			serviceLocator.getLogger().info("User failed to create the Chatroom "+ name);
+			}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return successfullAnswer.get();
 	}
 
 	public boolean createAccount(String name, String password) {
@@ -154,7 +168,7 @@ public class App_Model extends Model {
 					socketOut.flush();
 					Thread.sleep(500);
 					ArrayList<String> data = newData;
-					if (Boolean.parseBoolean(data.get(1))) {
+					if (Boolean.parseBoolean(data.get(2))) {
 						serviceLocator.getLogger().info("Succeded to send: " + messageTxt);
 					} else {
 						serviceLocator.getLogger().info("Failed to send: " + messageTxt);
