@@ -28,7 +28,8 @@ public class ChatScreenView extends ScrollPane {
 	}
 	
 	public void removeAllMessages () {
-		this.getChildren().clear();
+		screenTextArea.clear();
+		this.setContent(screenTextArea);
 	}
 	
 	
