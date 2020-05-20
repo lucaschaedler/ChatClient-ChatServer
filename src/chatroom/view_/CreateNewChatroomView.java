@@ -70,4 +70,11 @@ public class CreateNewChatroomView extends Stage {
 	       
 	       
 	    }
+		public void start() {
+			this.show();
+		}
+
+		public void stop() {
+			this.close();
+		}
 }

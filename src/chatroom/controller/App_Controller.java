@@ -248,8 +248,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		view.createNewChatroomView.createNewRoomBtn.setOnAction(e -> {
 			if (model.createChatroom(view.createNewChatroomView.chatroomNameTxtF.getText(),
 					view.createNewChatroomView.isPublicCheckBox.isSelected())) {
-				view.createChatroomView();
 				listChatrooms(e);
+				view.createNewChatroomView.stop();
 			} else {
 				view.createNewChatroomView.failedToCreateChatroom();
 			}
