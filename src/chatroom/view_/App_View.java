@@ -23,9 +23,9 @@ public class App_View extends View<App_Model> {
 	public LoginView loginView;
 	public AccountView accountView;
 	public ChatMenu chatMenu;
-	public RoomListScrollPane roomListView;
+	public RoomListScrollPane roomListScrollPane;
 	public ChatScreenView chatScreenView;
-	public UserListScrollPane userListView;
+	public UserListScrollPane userListScrollPane;
 	public UserPanel userPanel;
 	public BorderPane root;
 	public CreateNewChatroomView createNewChatroomView;
@@ -48,15 +48,15 @@ public class App_View extends View<App_Model> {
 	@Override
 	protected Scene create_GUI() {
 		chatMenu = new ChatMenu();
-		roomListView = new RoomListScrollPane();
+		roomListScrollPane = new RoomListScrollPane();
 		chatScreenView = new ChatScreenView();
-		userListView = new UserListScrollPane();
+		userListScrollPane = new UserListScrollPane();
 		userPanel = new UserPanel();
 		root = new BorderPane();
 		root.setTop(chatMenu);
-		root.setLeft(roomListView);
+		root.setLeft(roomListScrollPane);
 		root.setCenter(chatScreenView);
-		root.setRight(userListView);
+		root.setRight(userListScrollPane);
 		root.setBottom(userPanel);
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("mainview.css").toExternalForm());
