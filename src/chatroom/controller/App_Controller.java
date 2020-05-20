@@ -275,7 +275,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void sendMessage() {
-		model.sendAMessage(view.userPanel.writeTextArea.getText());
+		model.sendMessage(view.userPanel.writeTextArea.getText());
 		view.userPanel.writeTextArea.clear();
 	}
 

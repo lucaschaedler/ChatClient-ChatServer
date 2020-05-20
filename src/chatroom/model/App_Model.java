@@ -143,7 +143,7 @@ public class App_Model extends Model {
 		return successfullAnswer.get();
 	}
 
-	public void sendAMessage(String messageTxt) {
+	public void sendMessage(String messageTxt) {
 		Thread thread = new Thread(new Runnable() {
 
 			@Override
