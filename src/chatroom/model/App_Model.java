@@ -7,6 +7,7 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.abstractClasses.Model;
 import chatroom.ServiceLocator;
@@ -33,6 +34,8 @@ public class App_Model extends Model {
 	private boolean isOnline = false;
 	public ArrayList<String> rooms = new ArrayList<String>();
 	private String currentPassword;
+    public SimpleStringProperty data = new SimpleStringProperty();
+    public SimpleStringProperty message = new SimpleStringProperty();
 
 	private Socket socket;
 	private OutputStreamWriter socketOut;
@@ -67,11 +70,6 @@ public class App_Model extends Model {
 		return connection;
 	}
 
-	private void getTheServerMessages() {
-		// TODO Auto-generated method stub
-
-	}
-
 	public boolean createChatroom(String text, boolean selected) {
 		// TODO Auto-generated method stub
 		return false;
@@ -80,14 +78,14 @@ public class App_Model extends Model {
 	public boolean createAccount(String name, String password) {
 		boolean createdAccount = false;
 		try {
-		socketOut.write("CreateLogin|" + name + "|" + password +"\n");
-		socketOut.flush();
-		Thread.sleep(500);
-		if(successfullAnswer.get()) {
-		serviceLocator.getLogger().info("User " + name + " created an account.");
-		} else {
-		serviceLocator.getLogger().info("User: " + name + " failed to create an account.");
-		}
+			socketOut.write("CreateLogin|" + name + "|" + password + "\n");
+			socketOut.flush();
+			Thread.sleep(500);
+			if (successfullAnswer.get()) {
+				serviceLocator.getLogger().info("User " + name + " created an account.");
+			} else {
+				serviceLocator.getLogger().info("User: " + name + " failed to create an account.");
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
@@ -98,43 +96,43 @@ public class App_Model extends Model {
 	}
 
 	public boolean login(String name, String password) {
-		
+
 		try {
-			socketOut.write("Login|" + name + "|" + password+"\n");
+			socketOut.write("Login|" + name + "|" + password + "\n");
 			socketOut.flush();
 			Thread.sleep(500);
-			ArrayList <String> data = new ArrayList <String>();
+			ArrayList<String> data = new ArrayList<String>();
 			data = newData;
-			if(successfullAnswer.get()) {// bei diesem wurde was geändert auch serverseitig
-			isOnline = true;
-			currentUser = name;
-			securePIN = data.get(2);
-			this.currentPassword = password;
-			serviceLocator.getLogger().info("User: " + name + " logged in.");
+			if (successfullAnswer.get()) {// bei diesem wurde was geändert auch serverseitig
+				isOnline = true;
+				currentUser = name;
+				securePIN = data.get(2);
+				this.currentPassword = password;
+				serviceLocator.getLogger().info("User: " + name + " logged in.");
 			} else {
-			serviceLocator.getLogger().info("User: " + name + " failed to login.");
+				serviceLocator.getLogger().info("User: " + name + " failed to login.");
 			}
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-			return successfullAnswer.get();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return successfullAnswer.get();
 	}
 
 	public boolean logout(String name, String password) {
 		boolean isLoggedOut = false;
 		try {
-		socketOut.write("Logout|" + name + "|" + password+"\n");
-		socketOut.flush();
-		Thread.sleep(500);
-		if(successfullAnswer.get()) {
-		serviceLocator.getLogger().info("User " + name + " is now logged out.");
-		} else {
-		serviceLocator.getLogger().info("User: " + name + " failed to do logout.");
-		}
+			socketOut.write("Logout|" + name + "|" + password + "\n");
+			socketOut.flush();
+			Thread.sleep(500);
+			if (successfullAnswer.get()) {
+				serviceLocator.getLogger().info("User " + name + " is now logged out.");
+			} else {
+				serviceLocator.getLogger().info("User: " + name + " failed to do logout.");
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
@@ -213,14 +211,69 @@ public class App_Model extends Model {
 				e.printStackTrace();
 			}
 			return successfullAnswer.get();
-		} else	
-		serviceLocator.getLogger().info("OldPassword isnt corret");
+		} else
+			serviceLocator.getLogger().info("OldPassword isn't corret");
 		return false;
 	}
 
 	public void listChatrooms() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public static ArrayList<String> extractDataFromMessage(String input) {
+		ArrayList <String> data = new ArrayList<String> ();
+		Scanner scan = new Scanner(input);
+		scan.useDelimiter("\\|");
+		while (scan.hasNext()) {
+			data.add(scan.next());
+		}
+		return data;
+	}
+	
+	public void listMessageText(ArrayList<String> data) {
+		message.set(data.get(1)+ ": " + data.get(data.size()-1));
+	}
+
+	public void getTheServerMessages() {
+		Thread thread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+
+				while (true) {
+
+					try {
+						data.set(inReader.readLine());
+						ArrayList<String> dataAsArray = new ArrayList<String>();
+						dataAsArray = extractDataFromMessage(data.get());
+						System.out.println(dataAsArray);
+						switch (dataAsArray.get(0)) {
+
+						case "MessageText":
+							listMessageText(dataAsArray);
+							break;
+						case "Result":
+							if (Boolean.parseBoolean(dataAsArray.get(2))) {
+								successfullAnswer.set(true);
+								newData = dataAsArray;
+							} else {
+								successfullAnswer.set(false);
+								newData = dataAsArray;
+							}
+							break;
+						}
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+
+			}
+
+		});
+		thread.setDaemon(true);
+		thread.start();
 	}
 
 }
