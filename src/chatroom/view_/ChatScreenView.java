@@ -1,6 +1,7 @@
 package chatroom.view_;
 
 import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 
@@ -19,6 +20,15 @@ public class ChatScreenView extends ScrollPane {
 		this.setPadding(new Insets(10));
 		this.setMinSize(720, 420);
 		
+	}
+
+	public void createNewMessageLine(String message) {
+		screenTextArea.setText(message);
+		this.setContent(screenTextArea);
+	}
+	
+	public void removeAllMessages () {
+		this.getChildren().clear();
 	}
 	
 	

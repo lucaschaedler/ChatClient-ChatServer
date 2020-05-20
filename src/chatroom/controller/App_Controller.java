@@ -68,6 +68,12 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		serviceLocator = ServiceLocator.getServiceLocator();
 		serviceLocator.getLogger().info("Application controller initialized");
 
+		model.message.addListener((observable, oldValue, newValue)->{
+			Platform.runLater(()->{
+    		view.chatScreenView.createNewMessageLine(newValue);
+			});
+    	});
+		
 		view.getLoginItem().setOnAction(e -> {
 			createLoginView();
 		});
