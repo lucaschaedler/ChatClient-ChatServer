@@ -66,11 +66,11 @@ public class App_View extends View<App_Model> {
 	public void createNewLoginView() {
 		loginView = new LoginView();
 	}
-	
+
 	public void createNewLoginViewStart() {
 		loginView.start();
 	}
-	
+
 	public void createNewLoginViewStop() {
 		loginView.stop();
 	}
@@ -86,11 +86,11 @@ public class App_View extends View<App_Model> {
 	public void createNewAccountView() {
 		accountView = new AccountView();
 	}
-	
+
 	public void createNewAccountViewStart() {
 		accountView.start();
 	}
-	
+
 	public void createNewAccountViewStop() {
 		accountView.stop();
 	}
@@ -156,6 +156,8 @@ public class App_View extends View<App_Model> {
 		return accountView.getCancelBtn();
 	}
 
-	
+	public MenuItem getLogoutItem() {
+		return chatMenu.getLogoutItem();
+	}
 
 }

@@ -18,6 +18,7 @@ public class LoginView extends Stage {
 	public TextField userName;
 	public PasswordField password;
 	public Label userNameLbl, passwordLbl;
+	public Label failedLbl;
 
 	public LoginView() {
 		pane = new GridPane();
@@ -75,10 +76,11 @@ public class LoginView extends Stage {
 	}
 
 	public void failedToDoLogin() {
-		Label failedLbl = new Label("Failed to do Login");
+		failedLbl = new Label("Failed to do Login");
 		failedLbl.setTextFill(Color.RED);
 		pane.add(failedLbl, 2, 4);
 		this.sizeToScene();
+		updateTexts();
 	}
 
 	public void updateTexts() {
@@ -88,6 +90,12 @@ public class LoginView extends Stage {
 		passwordLbl.setText(t.getString("loginview.label.passswordlbl"));
 		confirmBtn.setText(t.getString("loginview.button.confirmbtn"));
 		createAccountBtn.setText(t.getString("loginview.button.createaccountbtn"));
+		try {
+			failedLbl.setText(t.getString("loginview.label.failedlbl"));
+
+		} catch (Exception e) {
+			// nullpointer fals das label noch nicht exisiert
+		}
 		this.setTitle(t.getString("loginview.titel"));
 	}
 

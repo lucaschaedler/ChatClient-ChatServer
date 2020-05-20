@@ -91,7 +91,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			createChangePasswordView();
 		});
 
-		view.chatMenu.getMenuLogoutItem().setOnAction(e -> {
+		view.chatMenu.getLogoutItem().setOnAction(e -> {
 			doLogout();
 		});
 
@@ -281,6 +281,9 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		model.logout(name, password);
 		view.stop();
 		view.createNewLoginViewStart();
+		view.getLogoutItem().setDisable(true);
+		view.getLoginItem().setDisable(false);
+		view.getCreateAccountItem().setDisable(false);
 
 	}
 
@@ -311,6 +314,9 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			view.showUser(name);
 			view.start();// main gui start when login is correct
 			view.destroyLoginView();
+			view.getLoginItem().setDisable(true);
+			view.getLogoutItem().setDisable(false);
+			view.getCreateAccountItem().setDisable(true);
 
 		} else {
 			view.loginView.failedToDoLogin();

@@ -67,7 +67,7 @@ public class ChatMenu extends MenuBar {
 		return loginItem;
 	}
 
-	public MenuItem getMenuLogoutItem() {
+	public MenuItem getLogoutItem() {
 		return logoutItem;
 	}
 

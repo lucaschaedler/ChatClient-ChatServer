@@ -16,6 +16,7 @@ public class AccountView extends Stage {
 	public TextField userName, password, passwordConfirm;
 	public Label userNameLbl, passwordLbl, passwordConfirmLbl;
 	public GridPane pane;
+	public Label failedLbl;
 
 	public AccountView() {
 		pane = new GridPane();
@@ -82,10 +83,11 @@ public class AccountView extends Stage {
 	}
 
 	public void failedToCreateAccount() {
-		Label failedLbl = new Label("Failed to create Account");
+		failedLbl = new Label("Failed to create Account");
 		failedLbl.setTextFill(Color.RED);
 		pane.add(failedLbl, 2, 4);
 		this.sizeToScene();
+		updateTexts();
 	}
 
 	public void updateTexts() {
@@ -96,6 +98,11 @@ public class AccountView extends Stage {
 		passwordConfirmLbl.setText(t.getString("accountview.label.passwordconfirmlbl"));
 		confirmBtn.setText(t.getString("loginview.button.confirmbtn"));
 		cancelBtn.setText(t.getString("accountview.button.cancelBtn"));
+		try{failedLbl.setText(t.getString("accountview.lable.failedlbl"));
+		
+		}catch(Exception e) {
+			//nullpointer fals das Label noch nicht existiert
+		}
 		this.setTitle(t.getString("accountview.titel"));
 
 	}
