@@ -1,5 +1,7 @@
 package chatroom.view_;
 
+import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -9,18 +11,20 @@ import javafx.scene.control.ScrollPane;
 public class UserListScrollPane extends ScrollPane {
 	
 	public ListView<String> userListView;
-	public ObservableList<String> otherUsersOnline = FXCollections.observableArrayList("herbert33", "jakob89", "free_aladin",
-			"bastian", "prisitina_gangsta", "player69", "mrr0omantico", "zidane", "dubischdochvumheim22", "gustavo", "chillyvanilly",
-			"brudi04", "herpes", "kaspar", "riesen05", "teleskop", "kurva", "guest04", "perle", "hannes", "guest05",
-			"johannes", "chatter44", "brudabeforeluda");
+	public ObservableList<String> otherUsersOnline = FXCollections.observableArrayList();
 	
 	public UserListScrollPane() {
 		userListView = new ListView<>();
-		userListView.setItems(otherUsersOnline);
+		userListView.setItems(otherUsersOnline);//default
 		userListView.setMaxWidth(160);
 		this.setContent(userListView);
 		this.setPadding(new Insets(10));
 		this.setMaxWidth(180);
+	}
+
+	public void actualizeChatroomsUsers(ArrayList<String> chatroomUser) {
+		userListView = new ListView<String>(FXCollections.observableArrayList(chatroomUser));
+		this.setContent(userListView);
 	}
 	
 

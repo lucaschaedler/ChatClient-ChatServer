@@ -34,8 +34,9 @@ public class App_Model extends Model {
 	private boolean isOnline = false;
 	public ArrayList<String> rooms = new ArrayList<String>();
 	private String currentPassword;
-    public SimpleStringProperty data = new SimpleStringProperty();
-    public SimpleStringProperty message = new SimpleStringProperty();
+	public SimpleStringProperty data = new SimpleStringProperty();
+	public SimpleStringProperty message = new SimpleStringProperty();
+	public ArrayList<String> chatroomUser = new ArrayList<String>();
 
 	private Socket socket;
 	private OutputStreamWriter socketOut;
@@ -72,21 +73,21 @@ public class App_Model extends Model {
 
 	public boolean createChatroom(String name, boolean isPublic) {
 		try {
-			socketOut.write("CreateChatroom|" + token + "|" + name+ "|" + isPublic +"\n");
+			socketOut.write("CreateChatroom|" + token + "|" + name + "|" + isPublic + "\n");
 			socketOut.flush();
 			Thread.sleep(900);
-			if(successfullAnswer.get()) {
-			serviceLocator.getLogger().info("User created the Chatroom "+ name);
+			if (successfullAnswer.get()) {
+				serviceLocator.getLogger().info("User created the Chatroom " + name);
 			} else {
-			serviceLocator.getLogger().info("User failed to create the Chatroom "+ name);
+				serviceLocator.getLogger().info("User failed to create the Chatroom " + name);
 			}
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return successfullAnswer.get();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return successfullAnswer.get();
 	}
 
 	public boolean createAccount(String name, String password) {
@@ -120,7 +121,7 @@ public class App_Model extends Model {
 			if (successfullAnswer.get()) {
 				isOnline = true;
 				currentUser = name;
-				token = data.get(3);//token from server
+				token = data.get(3);// token from server
 
 				this.currentPassword = password;
 				serviceLocator.getLogger().info("User: " + name + " logged in.");
@@ -233,35 +234,35 @@ public class App_Model extends Model {
 	}
 
 	public void listChatrooms() {
-		Thread thread = new Thread (new Runnable(){
-			
+		Thread thread = new Thread(new Runnable() {
+
 			@Override
 			public void run() {
 				try {
-				socketOut.write("ListChatrooms|" + token + "\n");
-				socketOut.flush();
-				if (successfullAnswer.get()) {
-				rooms = newData;
-				rooms.remove(0);
-				rooms.remove(0);
+					socketOut.write("ListChatrooms|" + token + "\n");
+					socketOut.flush();
+					if (successfullAnswer.get()) {
+						rooms = newData;
+						rooms.remove(0);
+						rooms.remove(0);
+					}
+
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
+
 		}
-			
-	}
-				
-);
-thread.setDaemon(true);
-thread.start();
+
+		);
+		thread.setDaemon(true);
+		thread.start();
 
 	}
-	
+
 	public static ArrayList<String> extractDataFromMessage(String input) {
-		ArrayList <String> data = new ArrayList<String> ();
+		ArrayList<String> data = new ArrayList<String>();
 		Scanner scan = new Scanner(input);
 		scan.useDelimiter("\\|");
 		while (scan.hasNext()) {
@@ -269,9 +270,9 @@ thread.start();
 		}
 		return data;
 	}
-	
+
 	public void listMessageText(ArrayList<String> data) {
-		message.set(data.get(1)+ ": " + data.get(data.size()-1));
+		message.set(data.get(1) + ": " + data.get(data.size() - 1));
 	}
 
 	public void getTheServerMessages() {
@@ -311,6 +312,34 @@ thread.start();
 			}
 
 		});
+		thread.setDaemon(true);
+		thread.start();
+	}
+
+	public void listTheChatroomUser() {
+
+		Thread thread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					socketOut.write("ListChatroomUsers|" + token + "|" + currentChatroom + "|" + currentUser + "\n");
+					socketOut.flush();
+					if (successfullAnswer.get()) {
+						chatroomUser = newData;
+						chatroomUser.remove(0);
+						chatroomUser.remove(0);
+					}
+
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+		}
+
+		);
 		thread.setDaemon(true);
 		thread.start();
 	}

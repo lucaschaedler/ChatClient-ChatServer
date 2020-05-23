@@ -259,7 +259,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		view.createNewChatroomView.createNewRoomBtn.setOnAction(e -> {
 			if (model.createChatroom(view.createNewChatroomView.chatroomNameTxtF.getText(),
 					view.createNewChatroomView.isPublicCheckBox.isSelected())) {
-				listChatrooms(e);
+				listChatrooms();
 				view.createNewChatroomView.stop();
 			} else {
 				view.createNewChatroomView.failedToCreateChatroom();
@@ -268,7 +268,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	}
 
-	private void listChatrooms(ActionEvent e) {
+	private void listChatrooms() {
 		for (int i = 0; i < 2; i++) {
 			model.listChatrooms();
 			try {
@@ -292,12 +292,22 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void listChatroomUser() {
-
+		for (int i = 0; i < 2; i++) {
+			model.listTheChatroomUser();
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			view.userListScrollPane.actualizeChatroomsUsers(model.chatroomUser);
+		}
 	}
 
 	private void sendMessage() {
 		model.sendMessage(view.userPanel.writeTextArea.getText());
 		view.userPanel.writeTextArea.clear();
+		listChatroomUser();
 	}
 
 	private void changePassword() {
@@ -336,17 +346,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	}
 
-	private void refresh() {
-//		for (int i = 0; i < 2; i++) {
-//			model.listChatrooms();
-//			try {
-//				Thread.sleep(100);
-//			} catch (InterruptedException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
-//			view.roomListView.actualizeChatrooms(model.rooms);
-//		}
+	private void refresh() {//ev entfernen
 	}
 
 	private void doLogin() {
@@ -359,6 +359,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			view.getLoginItem().setDisable(true);
 			view.getLogoutItem().setDisable(false);
 			view.getCreateAccountItem().setDisable(true);
+			listChatrooms();//liste der chatrooms
 
 		} else {
 			view.loginView.failedToDoLogin();
