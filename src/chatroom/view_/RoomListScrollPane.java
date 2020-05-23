@@ -16,7 +16,7 @@ public class RoomListScrollPane extends ScrollPane {
 	public RoomListScrollPane() {
 		ArrayList<String> names = new ArrayList<>();
 		ObservableList<String> chatRooms = FXCollections.observableArrayList(names);
-		
+
 		roomListView = new ListView<>();
 		roomListView.setItems(chatRooms);
 		roomListView.setMaxWidth(160);
@@ -28,8 +28,7 @@ public class RoomListScrollPane extends ScrollPane {
 	public void actualizeChatrooms(ArrayList<String> rooms) {
 		roomListView = new ListView<String>(FXCollections.observableArrayList(rooms));
 		this.setContent(roomListView);
-		
+
 	}
-		
-	
+
 }

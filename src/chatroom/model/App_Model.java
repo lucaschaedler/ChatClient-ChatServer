@@ -245,6 +245,7 @@ public class App_Model extends Model {
 						rooms = newData;
 						rooms.remove(0);
 						rooms.remove(0);
+						rooms.remove(0);
 					}
 
 				} catch (IOException e) {
@@ -329,6 +330,7 @@ public class App_Model extends Model {
 						chatroomUser = newData;
 						chatroomUser.remove(0);
 						chatroomUser.remove(0);
+						chatroomUser.remove(0);
 					}
 
 				} catch (IOException e) {
@@ -342,6 +344,63 @@ public class App_Model extends Model {
 		);
 		thread.setDaemon(true);
 		thread.start();
+	}
+
+	public boolean deleteAccount(String accountName) {
+		try {
+			socketOut.write("DeleteLogin|" + token + "|" + accountName+ "\n");
+			socketOut.flush();
+			Thread.sleep(500);
+			if(successfullAnswer.get()) {
+			serviceLocator.getLogger().info("User deleted the Account "+ accountName);
+			} else {
+			serviceLocator.getLogger().info("User failed to delete the Account "+ accountName);
+			}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return successfullAnswer.get();
+	}
+
+	public boolean deleteChatroom(String chatroomName) {
+		try {
+			socketOut.write("DeleteChatroom|" + token + "|" + chatroomName+ "\n");
+			socketOut.flush();
+			Thread.sleep(500);
+			if(successfullAnswer.get()) {
+			serviceLocator.getLogger().info("User deleted the Chatroom "+ chatroomName);
+			} else {
+			serviceLocator.getLogger().info("User failed to delete the Chatroom "+ chatroomName);
+			}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return successfullAnswer.get();
+	}
+
+	public boolean leaveChatroom(String chatroomName) {
+		try {
+			socketOut.write("LeaveChatroom|" + token + "|" + chatroomName+ "|" + currentUser + "\n");
+			socketOut.flush();
+			Thread.sleep(500);
+			if(successfullAnswer.get()) {
+			serviceLocator.getLogger().info("User leaved the Chatroom "+ chatroomName);
+			} else {
+			serviceLocator.getLogger().info("User failed to leave the Chatroom "+ chatroomName);
+			}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return successfullAnswer.get();
 	}
 
 }

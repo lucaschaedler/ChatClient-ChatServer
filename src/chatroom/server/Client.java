@@ -1,4 +1,4 @@
-package chatroom.server_Testing;
+package chatroom.server;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
-import chatroom.server_Testing.message.Message;
-import chatroom.server_Testing.message.MessageError;
+import chatroom.server.message.Message;
+import chatroom.server.message.MessageError;
 
 /**
  * This class represents a client, from the perspective of the server. We

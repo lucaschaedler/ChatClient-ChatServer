@@ -1,6 +1,6 @@
-package chatroom.server_Testing;
+package chatroom.server;
 
-import chatroom.server_Testing.message.Message;
+import chatroom.server.message.Message;
 
 /**
  * We can send messages to a class that implements this interface.

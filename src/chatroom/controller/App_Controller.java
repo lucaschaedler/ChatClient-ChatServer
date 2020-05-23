@@ -7,9 +7,11 @@ import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.abstractClasses.Controlle
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.commonClasses.Translator;
 import chatroom.ServiceLocator;
 import chatroom.model.App_Model;
+import chatroom.server.Account;
 import chatroom.view_.App_View;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -72,6 +74,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		model.message.addListener((observable, oldValue, newValue) -> {
 			Platform.runLater(() -> {
 				view.chatScreenView.createNewMessageLine(newValue);
+				listChatroomUser();
 			});
 		});
 
@@ -139,6 +142,14 @@ public class App_Controller extends Controller<App_Model, App_View> {
 				sendMessage();
 			
 		});
+		
+		view.userPanel.deleteChatroomBtn.setOnAction(e -> {
+			deleteChatroom();
+		});
+		
+		view.userPanel.leaveBtn.setOnAction(e -> {
+			leaveChatroom();
+		});
 
 		ServiceLocator sl = ServiceLocator.getServiceLocator();
 		for (Locale locale : sl.getLocales()) {
@@ -192,6 +203,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		}
 
 	}// konstruktor
+
+	
 
 	private void closeView() {
 		view.myProfileView.stop();
@@ -260,6 +273,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			if (model.createChatroom(view.createNewChatroomView.chatroomNameTxtF.getText(),
 					view.createNewChatroomView.isPublicCheckBox.isSelected())) {
 				listChatrooms();
+				//direkt neu erstellter room joinen
 				view.createNewChatroomView.stop();
 			} else {
 				view.createNewChatroomView.failedToCreateChatroom();
@@ -328,6 +342,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		view.getLogoutItem().setDisable(true);
 		view.getLoginItem().setDisable(false);
 		view.getCreateAccountItem().setDisable(false);
+		leaveChatroom();
 
 	}
 
@@ -342,11 +357,19 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void deleteAccount() {
-		// TODO Auto-generated method stub
-
+		String name = view.loginView.getUserName();
+		Account acc = chatroom.server.Account.exists(name);
+		chatroom.server.Account.remove(acc);
+		if(chatroom.server.Account.exists(name) == null) {
+			model.deleteAccount(name);
+			this.doLogout();
+		} else {
+			
+		}
 	}
 
 	private void refresh() {//ev entfernen
+		listChatrooms();
 	}
 
 	private void doLogin() {
@@ -375,6 +398,24 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			view.createNewLoginViewStart();
 		} else {
 			view.accountView.failedToCreateAccount();
+		}
+	}
+	
+	public void deleteChatroom() {
+		if(model.deleteChatroom(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem())) {
+			leaveChatroom();
+			listChatrooms();
+		}
+		
+	}
+	
+	private void leaveChatroom() {
+		if(model.leaveChatroom(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem())) {
+			view.userPanel.changeChatroomName("--");
+			view.userPanel.writeTextArea.clear();
+			view.chatScreenView.removeAllMessages();
+			listChatrooms();
+			view.userListScrollPane.emptyList();
 		}
 	}
 

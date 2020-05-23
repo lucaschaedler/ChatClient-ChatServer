@@ -1,4 +1,4 @@
-package chatroom.server_Testing.message;
+package chatroom.server.message;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import chatroom.server_Testing.Client;
+import chatroom.server.Client;
 
 public abstract class Message {
 	private static Logger logger = Logger.getLogger("");

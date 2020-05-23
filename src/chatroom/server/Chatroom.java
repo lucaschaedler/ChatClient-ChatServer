@@ -1,4 +1,4 @@
-package chatroom.server_Testing;
+package chatroom.server;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.TreeSet;
 import java.util.logging.Logger;
 
-import chatroom.server_Testing.message.Message;
+import chatroom.server.message.Message;
 
 /**
  * This class represents a chatroom, which may be either public or private, and

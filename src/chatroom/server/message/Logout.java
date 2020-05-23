@@ -1,6 +1,6 @@
-package chatroom.server_Testing.message;
+package chatroom.server.message;
 
-import chatroom.server_Testing.Client;
+import chatroom.server.Client;
 
 public class Logout extends Message {
 

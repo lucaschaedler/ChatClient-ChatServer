@@ -1,4 +1,4 @@
-package chatroom.server_Testing;
+package chatroom.server;
 
 import java.util.logging.Logger;
 

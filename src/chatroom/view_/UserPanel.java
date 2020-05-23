@@ -15,7 +15,7 @@ public class UserPanel extends HBox {
 
 	private VBox buttonsBoxLeft = new VBox();
 	private VBox buttonsBoxRight = new VBox();
-	public Button addRoomBtn, joinRoomBtn, blockUserBtn, sendMessageBtn;
+	public Button addRoomBtn, joinRoomBtn, blockUserBtn, sendMessageBtn, deleteChatroomBtn, leaveBtn;
 	public ScrollPane writeScrollPane;
 	public TextField writeTextArea;
 	public Label chatroomName;
@@ -25,6 +25,8 @@ public class UserPanel extends HBox {
 		joinRoomBtn = new Button("Join Room");
 		blockUserBtn = new Button("Block");
 		sendMessageBtn = new Button("Send");
+		deleteChatroomBtn = new Button("Delete chatroom");
+		leaveBtn = new Button("leave chatroom");
 		writeScrollPane = new ScrollPane();
 		writeTextArea = new TextField();
 		chatroomName = new Label();
@@ -48,10 +50,10 @@ public class UserPanel extends HBox {
 		joinRoomBtn.setMinSize(100, 60);
 		blockUserBtn.setMinSize(100, 60);
 		sendMessageBtn.setMinSize(100, 60);
-		buttonsBoxLeft.getChildren().addAll(addRoomBtn, joinRoomBtn,chatroomName);
+		buttonsBoxLeft.getChildren().addAll(addRoomBtn, joinRoomBtn, deleteChatroomBtn, chatroomName);
 		buttonsBoxLeft.setSpacing(5);
 		buttonsBoxLeft.setPadding(new Insets(10));
-		buttonsBoxRight.getChildren().addAll(blockUserBtn, sendMessageBtn);
+		buttonsBoxRight.getChildren().addAll(blockUserBtn, sendMessageBtn, leaveBtn);
 		buttonsBoxRight.setSpacing(5);
 		buttonsBoxRight.setPadding(new Insets(10));
 		this.getChildren().addAll(buttonsBoxLeft, writeScrollPane, buttonsBoxRight);
@@ -70,6 +72,8 @@ public class UserPanel extends HBox {
 		joinRoomBtn.setText(t.getString("mainview.button.joinroom"));
 		blockUserBtn.setText(t.getString("mainview.button.blockuser"));
 		sendMessageBtn.setText(t.getString("mainview.button.sendmessage"));
+		deleteChatroomBtn.setText(t.getString("mainview.button.deletechatroom"));
+		leaveBtn.setText(t.getString("mainview.button.leavebtn"));
 	}
 
 	public void changeChatroomName(String selectedItem) {
