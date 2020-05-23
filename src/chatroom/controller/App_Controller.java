@@ -35,6 +35,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		view.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
 			@Override
 			public void handle(WindowEvent event) {
+				leaveChatroom();
 				Platform.exit();
 			}
 		});
@@ -261,6 +262,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	private void exit() {
 		serviceLocator.getConfiguration().save();
+		leaveChatroom();
 		Platform.exit();
 		System.exit(0);
 		serviceLocator.getLogger().info("Application terminated");
