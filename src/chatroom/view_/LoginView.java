@@ -83,6 +83,14 @@ public class LoginView extends Stage {
 		updateTexts();
 	}
 
+	public void successfullLogin() {
+		try {
+			failedLbl.setText("");
+		}catch(Exception x) {
+			//wenn es das label nicht gibt
+		}
+	}
+
 	public void updateTexts() {
 		Translator t = ServiceLocator.getServiceLocator().getTranslator();
 

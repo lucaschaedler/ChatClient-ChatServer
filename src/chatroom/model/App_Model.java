@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.abstractClasses.Model;
 import chatroom.ServiceLocator;
+import chatroom.view_.InformationView;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -37,6 +38,7 @@ public class App_Model extends Model {
 	public SimpleStringProperty data = new SimpleStringProperty();
 	public SimpleStringProperty message = new SimpleStringProperty();
 	public ArrayList<String> chatroomUser = new ArrayList<String>();
+	public boolean inChatroom;
 
 	private Socket socket;
 	private OutputStreamWriter socketOut;
@@ -156,6 +158,7 @@ public class App_Model extends Model {
 			e.printStackTrace();
 		}
 		this.isOnline = false;
+		this.token = null;
 		return successfullAnswer.get();
 	}
 
@@ -195,6 +198,7 @@ public class App_Model extends Model {
 			if (successfullAnswer.get() && !(chatroom.equals("null"))) {
 				serviceLocator.getLogger().info("User joined the Chatroom " + chatroom);
 				currentChatroom = chatroom;
+				inChatroom = true;
 			} else {
 				serviceLocator.getLogger().info("User failed to join the Chatroom " + chatroom);
 			}
@@ -243,9 +247,21 @@ public class App_Model extends Model {
 					socketOut.flush();
 					if (successfullAnswer.get()) {
 						rooms = newData;
-						rooms.remove(0);
-						rooms.remove(0);
-						rooms.remove(0);
+						try {
+							rooms.remove(0);	
+						}catch(Exception e) {
+							
+						}
+						try {
+							rooms.remove(0);	
+						}catch(Exception e) {
+							
+						}
+						try {
+							rooms.remove(0);	
+						}catch(Exception e) {
+							
+						}
 					}
 
 				} catch (IOException e) {
@@ -331,6 +347,7 @@ public class App_Model extends Model {
 						chatroomUser.remove(0);
 						chatroomUser.remove(0);
 						chatroomUser.remove(0);
+
 					}
 
 				} catch (IOException e) {
@@ -348,58 +365,59 @@ public class App_Model extends Model {
 
 	public boolean deleteAccount(String accountName) {
 		try {
-			socketOut.write("DeleteLogin|" + token + "|" + accountName+ "\n");
+			socketOut.write("DeleteLogin|" + token + "|" + accountName + "\n");
 			socketOut.flush();
 			Thread.sleep(500);
-			if(successfullAnswer.get()) {
-			serviceLocator.getLogger().info("User deleted the Account "+ accountName);
+			if (successfullAnswer.get()) {
+				serviceLocator.getLogger().info("User deleted the Account " + accountName);
 			} else {
-			serviceLocator.getLogger().info("User failed to delete the Account "+ accountName);
+				serviceLocator.getLogger().info("User failed to delete the Account " + accountName);
 			}
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return successfullAnswer.get();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return successfullAnswer.get();
 	}
 
 	public boolean deleteChatroom(String chatroomName) {
 		try {
-			socketOut.write("DeleteChatroom|" + token + "|" + chatroomName+ "\n");
+			socketOut.write("DeleteChatroom|" + token + "|" + chatroomName + "\n");
 			socketOut.flush();
 			Thread.sleep(500);
-			if(successfullAnswer.get()) {
-			serviceLocator.getLogger().info("User deleted the Chatroom "+ chatroomName);
+			if (successfullAnswer.get()) {
+				serviceLocator.getLogger().info("User deleted the Chatroom " + chatroomName);
 			} else {
-			serviceLocator.getLogger().info("User failed to delete the Chatroom "+ chatroomName);
+				serviceLocator.getLogger().info("User failed to delete the Chatroom " + chatroomName);
 			}
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return successfullAnswer.get();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return successfullAnswer.get();
 	}
 
 	public boolean leaveChatroom(String chatroomName) {
 		try {
-			socketOut.write("LeaveChatroom|" + token + "|" + chatroomName+ "|" + currentUser + "\n");
+			socketOut.write("LeaveChatroom|" + token + "|" + chatroomName + "|" + currentUser + "\n");
 			socketOut.flush();
 			Thread.sleep(500);
-			if(successfullAnswer.get()) {
-			serviceLocator.getLogger().info("User leaved the Chatroom "+ chatroomName);
+			if (successfullAnswer.get()) {
+				inChatroom = false;
+				serviceLocator.getLogger().info("User leaved the Chatroom " + chatroomName);
 			} else {
-			serviceLocator.getLogger().info("User failed to leave the Chatroom "+ chatroomName);
+				serviceLocator.getLogger().info("User failed to leave the Chatroom " + chatroomName);
 			}
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return successfullAnswer.get();
 	}
 

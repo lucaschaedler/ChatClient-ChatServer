@@ -140,14 +140,14 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		});
 
 		view.userPanel.writeTextArea.setOnAction(e -> {
-				sendMessage();
-			
+			sendMessage();
+
 		});
-		
+
 		view.userPanel.deleteChatroomBtn.setOnAction(e -> {
 			deleteChatroom();
 		});
-		
+
 		view.userPanel.leaveBtn.setOnAction(e -> {
 			leaveChatroom();
 		});
@@ -199,13 +199,16 @@ public class App_Controller extends Controller<App_Model, App_View> {
 				} catch (NullPointerException e) {
 					// ignore happen when view isn't open
 				}
+				try {
+					view.info.updateTexts();
+				} catch (NullPointerException e) {
+					// ignore happen when view isn't open
+				}
 
 			});
 		}
 
 	}// konstruktor
-
-	
 
 	private void closeView() {
 		view.myProfileView.stop();
@@ -275,7 +278,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			if (model.createChatroom(view.createNewChatroomView.chatroomNameTxtF.getText(),
 					view.createNewChatroomView.isPublicCheckBox.isSelected())) {
 				listChatrooms();
-				//direkt neu erstellter room joinen
+				// direkt neu erstellter room joinen
 				view.createNewChatroomView.stop();
 			} else {
 				view.createNewChatroomView.failedToCreateChatroom();
@@ -321,9 +324,14 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void sendMessage() {
+		if(model.inChatroom) {
 		model.sendMessage(view.userPanel.writeTextArea.getText());
 		view.userPanel.writeTextArea.clear();
 		listChatroomUser();
+		}else {
+			view.createInformationView();
+			view.info.start();
+		}
 	}
 
 	private void changePassword() {
@@ -344,7 +352,11 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		view.getLogoutItem().setDisable(true);
 		view.getLoginItem().setDisable(false);
 		view.getCreateAccountItem().setDisable(false);
-		leaveChatroom();
+		try {
+			leaveChatroom();
+		} catch (Exception e) {
+			// ignorieren falls man in keinem Chatroom ist
+		}
 
 	}
 
@@ -362,15 +374,15 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		String name = view.loginView.getUserName();
 		Account acc = chatroom.server.Account.exists(name);
 		chatroom.server.Account.remove(acc);
-		if(chatroom.server.Account.exists(name) == null) {
+		if (chatroom.server.Account.exists(name) == null) {
 			model.deleteAccount(name);
 			this.doLogout();
 		} else {
-			
+
 		}
 	}
 
-	private void refresh() {//ev entfernen
+	private void refresh() {// ev entfernen
 		listChatrooms();
 	}
 
@@ -384,7 +396,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			view.getLoginItem().setDisable(true);
 			view.getLogoutItem().setDisable(false);
 			view.getCreateAccountItem().setDisable(true);
-			listChatrooms();//liste der chatrooms
+			listChatrooms();// liste der chatrooms
+			view.loginView.successfullLogin();
 
 		} else {
 			view.loginView.failedToDoLogin();
@@ -402,17 +415,17 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			view.accountView.failedToCreateAccount();
 		}
 	}
-	
+
 	public void deleteChatroom() {
-		if(model.deleteChatroom(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem())) {
+		if (model.deleteChatroom(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem())) {
 			leaveChatroom();
 			listChatrooms();
 		}
-		
+
 	}
-	
+
 	private void leaveChatroom() {
-		if(model.leaveChatroom(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem())) {
+		if (model.leaveChatroom(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem())) {
 			view.userPanel.changeChatroomName("--");
 			view.userPanel.writeTextArea.clear();
 			view.chatScreenView.removeAllMessages();

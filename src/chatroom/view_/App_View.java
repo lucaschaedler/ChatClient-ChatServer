@@ -32,6 +32,7 @@ public class App_View extends View<App_Model> {
 	public MyProfileView myProfileView;
 	public ChangePasswordView changePasswordView;
 	public BlockListView blockListView;
+	public InformationView info;
 
 	public App_View(Stage stage, App_Model model) {
 		super(stage, model);
@@ -158,6 +159,10 @@ public class App_View extends View<App_Model> {
 
 	public MenuItem getLogoutItem() {
 		return chatMenu.getLogoutItem();
+	}
+
+	public void createInformationView() {
+		info = new InformationView();
 	}
 
 
