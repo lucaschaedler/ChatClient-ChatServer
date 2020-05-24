@@ -352,12 +352,12 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		view.getLogoutItem().setDisable(true);
 		view.getLoginItem().setDisable(false);
 		view.getCreateAccountItem().setDisable(false);
-		try {
-			leaveChatroom();
-		} catch (Exception e) {
-			// ignorieren falls man in keinem Chatroom ist
-		}
-
+//		try {
+//			leaveChatroom();
+//		} catch (Exception e) {
+//			// ignorieren falls man in keinem Chatroom ist
+//		}
+//das ist das problem darum kann man sich nicht wieder einloggen
 	}
 
 	private void blockSelectedUser() {
