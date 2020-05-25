@@ -277,9 +277,9 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		view.createNewChatroomView.createNewRoomBtn.setOnAction(e -> {
 			if (model.createChatroom(view.createNewChatroomView.chatroomNameTxtF.getText(),
 					view.createNewChatroomView.isPublicCheckBox.isSelected())) {
-				listChatrooms();
-				// direkt neu erstellter room joinen
+				// ev direkt joinen nach erstellen
 				view.createNewChatroomView.stop();
+				listChatrooms();
 			} else {
 				view.createNewChatroomView.failedToCreateChatroom();
 			}
@@ -324,11 +324,11 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void sendMessage() {
-		if(model.inChatroom) {
-		model.sendMessage(view.userPanel.writeTextArea.getText());
-		view.userPanel.writeTextArea.clear();
-		listChatroomUser();
-		}else {
+		if (model.inChatroom) {
+			model.sendMessage(view.userPanel.writeTextArea.getText());
+			view.userPanel.writeTextArea.clear();
+			listChatroomUser();
+		} else {
 			view.createInformationView();
 			view.info.start();
 		}
@@ -418,7 +418,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	public void deleteChatroom() {
 		if (model.deleteChatroom(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem())) {
-			leaveChatroom();
+			//leaveChatroom(); da man keine auswahl mer hat welchen man leaven will
 			listChatrooms();
 		}
 
@@ -429,8 +429,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			view.userPanel.changeChatroomName("--");
 			view.userPanel.writeTextArea.clear();
 			view.chatScreenView.removeAllMessages();
-			listChatrooms();
 			view.userListScrollPane.emptyList();
+			listChatrooms();
 		}
 	}
 
