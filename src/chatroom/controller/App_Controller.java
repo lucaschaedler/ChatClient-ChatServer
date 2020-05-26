@@ -232,6 +232,12 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	private void createMyProfilView() {
 		view.createMyProfilView();
+		view.myProfileView.usernameLbl2.setText(model.getUserName());
+		if (model.getIsOnline()) {
+			view.myProfileView.statusLbl2.setText("Online");
+		} else {
+			view.myProfileView.statusLbl2.setText("Offline");
+		}
 		view.myProfileView.closeBtn.setOnAction(e -> {
 			closeView();
 		});

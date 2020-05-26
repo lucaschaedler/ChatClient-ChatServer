@@ -2,6 +2,7 @@ package chatroom.view_;
 
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.commonClasses.Translator;
 import chatroom.ServiceLocator;
+import chatroom.model.App_Model;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -16,7 +17,7 @@ import javafx.stage.Stage;
 
 public class MyProfileView extends Stage{
 
-	public Label titleLbl, usernameLbl1, usernameLbl2, memberSinceLbl1, memberSinceLbl2, statusLbl1, statusLbl2;
+	public Label titleLbl, usernameLbl1, usernameLbl2, statusLbl1, statusLbl2;
 	public Button closeBtn;
 	
 	public static Image euler = new Image(MyProfileView.class.getResourceAsStream("euler.jpg")); 
@@ -31,21 +32,17 @@ public class MyProfileView extends Stage{
 		userImageView = new ImageView(euler);
 		userImageView.setFitHeight(70);
 		userImageView.setFitWidth(70);
-		titleLbl = new Label("Username");
+		titleLbl = new Label("My Profile");
 		titleLbl.setId("usernameTitle");
 		hbox.getChildren().addAll(userImageView, titleLbl);
 		
 		GridPane gridPane = new GridPane();
-		usernameLbl1 = new Label("Username:");
-		usernameLbl2 = new Label("bratucha54");
-		memberSinceLbl1 = new Label("Member Since:");
-		memberSinceLbl2 = new Label("24. Januar 2020");
+		usernameLbl1 = new Label("ppp");
+		usernameLbl2 = new Label();
 		statusLbl1 = new Label("Status:");
-		statusLbl2 = new Label("Online");
+		statusLbl2 = new Label();
 		gridPane.add(usernameLbl1, 0, 0);
 		gridPane.add(usernameLbl2, 1, 0);
-		gridPane.add(memberSinceLbl1, 0, 1);
-		gridPane.add(memberSinceLbl2, 1, 1);
 		gridPane.add(statusLbl1, 0, 2);
 		gridPane.add(statusLbl2, 1, 2);
 		gridPane.setHgap(30);
@@ -75,7 +72,6 @@ public class MyProfileView extends Stage{
 		Translator t = ServiceLocator.getServiceLocator().getTranslator();
 		
 		usernameLbl1.setText(t.getString("myprofileview.label.username"));
-		memberSinceLbl1.setText(t.getString("myprofileview.label.membersince"));
 		statusLbl1.setText(t.getString("myprofileview.label.status"));
 		closeBtn.setText(t.getString("myprofileview.button.close"));
 		this.setTitle(t.getString("myprofileview.titel"));
