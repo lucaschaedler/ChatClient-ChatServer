@@ -417,9 +417,9 @@ public class App_Model extends Model {
 			Thread.sleep(500);
 			if (successfullAnswer.get()) {
 				inChatroom = false;
-				serviceLocator.getLogger().info("User " + userName + "is online");
+				serviceLocator.getLogger().info("User " + userName + " is online");
 			} else {
-				serviceLocator.getLogger().info("User " + userName + "is offline");
+				serviceLocator.getLogger().info("User " + userName + " is offline");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -28,7 +28,7 @@ public class IsUserOnlineView extends Stage {
 		pane.add(info, 0, 0);
 		pane.add(lbl, 0, 1);
 		pane.add(userField, 1, 1);
-		pane.add(confirmOnlineBtn, 2, 3);
+		pane.add(confirmOnlineBtn, 2, 2);
 
 		updateTexts();
 
