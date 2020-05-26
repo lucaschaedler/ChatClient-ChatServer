@@ -30,6 +30,8 @@ public class IsUserOnlineView extends Stage {
 		pane.add(userField, 1, 1);
 		pane.add(confirmOnlineBtn, 2, 2);
 
+		pane.setVgap(5);
+
 		updateTexts();
 
 		Scene scene = new Scene(pane);
@@ -61,6 +63,8 @@ public class IsUserOnlineView extends Stage {
 			// nothing
 		}
 		this.setTitle(t.getString("isuseronline.titel"));
+		
+		this.sizeToScene();
 
 	}
 

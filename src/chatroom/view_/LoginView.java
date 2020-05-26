@@ -105,6 +105,7 @@ public class LoginView extends Stage {
 			// nullpointer fals das label noch nicht exisiert
 		}
 		this.setTitle(t.getString("loginview.titel"));
+		this.sizeToScene();
 	}
 
 }

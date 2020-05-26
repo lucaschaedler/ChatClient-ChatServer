@@ -104,6 +104,7 @@ public class AccountView extends Stage {
 			//nullpointer fals das Label noch nicht existiert
 		}
 		this.setTitle(t.getString("accountview.titel"));
+		this.sizeToScene();
 
 	}
 

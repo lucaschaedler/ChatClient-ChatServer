@@ -67,6 +67,7 @@ public class CreateNewChatroomView extends Stage {
 		}
 
 		this.setTitle(t.getString("createnewchatroomview.titel"));
+		this.sizeToScene();
 
 	}
 

@@ -197,6 +197,8 @@ public class App_Controller extends Controller<App_Model, App_View> {
 					// ignore happen when view isn't open
 				}
 
+				view.getStage().sizeToScene();
+
 			});
 		}
 

@@ -79,6 +79,7 @@ public class MyProfileView extends Stage{
 		statusLbl1.setText(t.getString("myprofileview.label.status"));
 		closeBtn.setText(t.getString("myprofileview.button.close"));
 		this.setTitle(t.getString("myprofileview.titel"));
+		this.sizeToScene();
 	}
 	public void stop() {
 		this.close();

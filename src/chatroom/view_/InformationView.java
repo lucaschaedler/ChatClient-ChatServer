@@ -31,6 +31,7 @@ public class InformationView extends Stage {
 		Translator t = ServiceLocator.getServiceLocator().getTranslator();
 		info.setText(t.getString("informationview.label"));
 		this.setTitle(t.getString("informationview.titel"));
+		this.sizeToScene();
 	}
 
 	public void start() {

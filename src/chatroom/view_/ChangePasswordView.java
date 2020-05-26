@@ -63,6 +63,7 @@ public class ChangePasswordView extends Stage {
 	       }
 	      
 	       this.setTitle(t.getString("changepasswordview.titel"));
+	       this.sizeToScene();
 	       
 	    }
 
