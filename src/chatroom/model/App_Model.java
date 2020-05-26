@@ -430,4 +430,12 @@ public class App_Model extends Model {
 		return successfullAnswer.get();
 	}
 
+	public String getUserName() {
+		return currentUser;
+	}
+	
+	public Boolean getIsOnline() {
+		return isOnline;
+	}
+
 }
