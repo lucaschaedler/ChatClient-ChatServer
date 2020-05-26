@@ -15,11 +15,9 @@ public class UserListScrollPane extends ScrollPane {
 
 	public UserListScrollPane() {
 		userListView = new ListView<>();
-		userListView.setItems(otherUsersOnline);// default
-		userListView.setMaxWidth(160);
+		userListView.setItems(otherUsersOnline); // default
 		this.setContent(userListView);
 		this.setPadding(new Insets(10));
-		this.setMaxWidth(180);
 	}
 
 	public void actualizeChatroomsUsers(ArrayList<String> chatroomUser) {

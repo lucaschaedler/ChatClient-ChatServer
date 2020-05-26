@@ -136,7 +136,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 		});
 
-		view.userPanel.deleteChatroomBtn.setOnAction(e -> {
+		view.userPanel.deleteRoomBtn.setOnAction(e -> {
 			deleteChatroom();
 		});
 
