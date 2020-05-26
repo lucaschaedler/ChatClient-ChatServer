@@ -15,21 +15,20 @@ public class UserPanel extends HBox {
 
 	private VBox buttonsBoxLeft = new VBox();
 	private VBox buttonsBoxRight = new VBox();
-	public Button addRoomBtn, joinRoomBtn, blockUserBtn, sendMessageBtn, deleteChatroomBtn, leaveBtn;
+	public Button addRoomBtn, joinRoomBtn, sendMessageBtn, deleteChatroomBtn, leaveRoomBtn;
 	public ScrollPane writeScrollPane;
 	public TextField writeTextArea;
-	public Label chatroomName;
+	public Label currentChatroomLbl;
 	
 	public UserPanel() {
 		addRoomBtn = new Button("Add Room");
 		joinRoomBtn = new Button("Join Room");
-		blockUserBtn = new Button("Block");
 		sendMessageBtn = new Button("Send");
-		deleteChatroomBtn = new Button("Delete chatroom");
-		leaveBtn = new Button("leave chatroom");
+		deleteChatroomBtn = new Button("Delete Room");
+		leaveRoomBtn = new Button("Leave Room");
 		writeScrollPane = new ScrollPane();
 		writeTextArea = new TextField();
-		chatroomName = new Label();
+		currentChatroomLbl = new Label();
 		
 		// MessageBox
 		writeTextArea.setText("--->>>Nachrichten schreiben<<<---");
@@ -48,12 +47,11 @@ public class UserPanel extends HBox {
 		// BottomBox
 		addRoomBtn.setMinSize(100, 60);
 		joinRoomBtn.setMinSize(100, 60);
-		blockUserBtn.setMinSize(100, 60);
 		sendMessageBtn.setMinSize(100, 60);
-		buttonsBoxLeft.getChildren().addAll(addRoomBtn, joinRoomBtn, deleteChatroomBtn, chatroomName);
+		buttonsBoxLeft.getChildren().addAll(addRoomBtn, joinRoomBtn, deleteChatroomBtn, leaveRoomBtn, currentChatroomLbl);
 		buttonsBoxLeft.setSpacing(5);
 		buttonsBoxLeft.setPadding(new Insets(10));
-		buttonsBoxRight.getChildren().addAll(blockUserBtn, sendMessageBtn, leaveBtn);
+		buttonsBoxRight.getChildren().addAll(sendMessageBtn);
 		buttonsBoxRight.setSpacing(5);
 		buttonsBoxRight.setPadding(new Insets(10));
 		this.getChildren().addAll(buttonsBoxLeft, writeScrollPane, buttonsBoxRight);
@@ -70,13 +68,12 @@ public class UserPanel extends HBox {
 		
 		addRoomBtn.setText(t.getString("mainview.button.addroom"));
 		joinRoomBtn.setText(t.getString("mainview.button.joinroom"));
-		blockUserBtn.setText(t.getString("mainview.button.blockuser"));
 		sendMessageBtn.setText(t.getString("mainview.button.sendmessage"));
 		deleteChatroomBtn.setText(t.getString("mainview.button.deletechatroom"));
-		leaveBtn.setText(t.getString("mainview.button.leavebtn"));
+		leaveRoomBtn.setText(t.getString("mainview.button.leavebtn"));
 	}
 
 	public void changeChatroomName(String selectedItem) {
-		chatroomName.setText("In Chatroom " + selectedItem);		
+		currentChatroomLbl.setText("In Chatroom " + selectedItem);		
 	}
 }
