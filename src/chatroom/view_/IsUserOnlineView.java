@@ -30,11 +30,11 @@ public class IsUserOnlineView extends Stage {
 		pane.add(userField, 1, 1);
 		pane.add(confirmOnlineBtn, 2, 3);
 
+		//updateTexts();
+
 		Scene scene = new Scene(pane);
 		this.setAlwaysOnTop(true);
 		this.setScene(scene);
-
-		updateTexts();
 
 		this.show();
 		this.setOnCloseRequest(e -> {
