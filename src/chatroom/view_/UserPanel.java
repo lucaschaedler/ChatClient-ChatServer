@@ -50,7 +50,6 @@ public class UserPanel extends HBox {
 		buttonsBoxLeft.setSpacing(5);
 		buttonsBoxLeft.setPadding(new Insets(10));
 		buttonsBoxRight.getChildren().addAll(sendMessageBtn);
-		buttonsBoxRight.setSpacing(5);
 		buttonsBoxRight.setPadding(new Insets(10));
 		this.getChildren().addAll(buttonsBoxLeft, writeScrollPane, buttonsBoxRight);
 		
