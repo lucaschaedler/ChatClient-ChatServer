@@ -191,6 +191,12 @@ public class App_Controller extends Controller<App_Model, App_View> {
 				} catch (NullPointerException e) {
 					// ignore happen when view isn't open
 				}
+				try {
+					//view.info.updateTexts(); isUserOnline
+				} catch (NullPointerException e) {
+					// ignore happen when view isn't open
+				}
+				
 
 			});
 		}
