@@ -15,7 +15,7 @@ public class ChatMenu extends MenuBar {
 
 	private Menu fileMenu, profileMenu, preferencesMenu;
 	public Menu languageMenu;
-	public MenuItem refreshItem, exitItem, createAccountItem, loginItem, myProfileItem, changePasswordItem, logoutItem,
+	public MenuItem refreshItem, userOnlineItem, exitItem, createAccountItem, loginItem, myProfileItem, changePasswordItem, logoutItem,
 		   deleteAccountItem, deLanguageItem, enLanguageItem;
 	public Menu userName;
 
@@ -30,12 +30,13 @@ public class ChatMenu extends MenuBar {
 		changePasswordItem = new MenuItem();
 		logoutItem = new MenuItem();
 		preferencesMenu = new Menu();
+		userOnlineItem = new MenuItem();
 		deleteAccountItem = new MenuItem();
 		languageMenu = new Menu();
 
 		fileMenu.getItems().addAll(refreshItem, exitItem);
 		profileMenu.getItems().addAll(createAccountItem, loginItem, myProfileItem, changePasswordItem, logoutItem);
-		preferencesMenu.getItems().addAll(languageMenu, deleteAccountItem);
+		preferencesMenu.getItems().addAll(userOnlineItem, languageMenu, deleteAccountItem);
 		this.getMenus().addAll(fileMenu, profileMenu, preferencesMenu);
 
 		Region space = new Region();
@@ -60,6 +61,7 @@ public class ChatMenu extends MenuBar {
 		changePasswordItem.setText(t.getString("mainview.menu.profile.changepassword"));
 		logoutItem.setText(t.getString("mainview.menu.profile.logout"));
 		preferencesMenu.setText(t.getString("mainview.menu.preferences"));
+		userOnlineItem.setText(t.getString("mainview.menu.preferences.useronline"));
 		deleteAccountItem.setText(t.getString("mainview.menu.preferences.deleteaccount"));
 		languageMenu.setText(t.getString("mainview.menu.preferences.languagemenu"));
 	}

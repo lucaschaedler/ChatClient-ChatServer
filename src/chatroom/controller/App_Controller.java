@@ -140,7 +140,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			deleteChatroom();
 		});
 
-		view.userPanel.leaveBtn.setOnAction(e -> {
+		view.userPanel.leaveRoomBtn.setOnAction(e -> {
 			leaveChatroom();
 		});
 
