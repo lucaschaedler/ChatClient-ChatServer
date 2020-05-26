@@ -208,9 +208,9 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	private void createIsUserOnlineView() {
 		view.createIsUserOnlineView();
-		//view.isUserOnline.confirmOnlineBtn.setOnAction(e -> {
-		//	isUserOnline();
-		//});
+		view.isUserOnline.confirmOnlineBtn.setOnAction(e -> {
+			isUserOnline();
+		});
 	}
 
 	private void isUserOnline() {

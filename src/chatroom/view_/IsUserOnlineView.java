@@ -18,7 +18,7 @@ public class IsUserOnlineView extends Stage {
 	public Button confirmOnlineBtn;
 	public Label resultOnline, resultOffline;
 
-	public void isUserOnlineView() {
+	public IsUserOnlineView() {
 		pane = new GridPane();
 		userField = new TextField();
 		info = new Label("");
@@ -30,7 +30,7 @@ public class IsUserOnlineView extends Stage {
 		pane.add(userField, 1, 1);
 		pane.add(confirmOnlineBtn, 2, 3);
 
-		//updateTexts();
+		updateTexts();
 
 		Scene scene = new Scene(pane);
 		this.setAlwaysOnTop(true);
@@ -66,13 +66,13 @@ public class IsUserOnlineView extends Stage {
 
 	public void userIsOnline() {
 		resultOnline = new Label();
-		pane.add(resultOnline, 2, 2);
+		pane.add(resultOnline, 2, 1);
 		updateTexts();
 	}
 
 	public void userIsOffline() {
 		resultOffline = new Label();
-		pane.add(resultOffline, 2, 2);
+		pane.add(resultOffline, 2, 1);
 		updateTexts();
 	}
 
