@@ -410,4 +410,24 @@ public class App_Model extends Model {
 		return successfullAnswer.get();
 	}
 
+	public boolean isUserOnline(String userName) {
+		try {
+			socketOut.write("UserOnline|" + token + "|" + userName + "\n");
+			socketOut.flush();
+			Thread.sleep(500);
+			if (successfullAnswer.get()) {
+				inChatroom = false;
+				serviceLocator.getLogger().info("User " + userName + "is online");
+			} else {
+				serviceLocator.getLogger().info("User " + userName + "is offline");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return successfullAnswer.get();
+	}
+
 }

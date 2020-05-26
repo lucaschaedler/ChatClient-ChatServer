@@ -144,6 +144,10 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			leaveChatroom();
 		});
 
+		view.chatMenu.userOnlineItem.setOnAction(e -> {
+			createIsUserOnlineView();
+		});
+
 		ServiceLocator sl = ServiceLocator.getServiceLocator();
 		for (Locale locale : sl.getLocales()) {
 			MenuItem language = new MenuItem(locale.getLanguage());
@@ -192,16 +196,30 @@ public class App_Controller extends Controller<App_Model, App_View> {
 					// ignore happen when view isn't open
 				}
 				try {
-					//view.info.updateTexts(); isUserOnline
+					view.isUserOnline.updateTexts();
 				} catch (NullPointerException e) {
 					// ignore happen when view isn't open
 				}
-				
 
 			});
 		}
 
 	}// konstruktor
+
+	private void createIsUserOnlineView() {
+		view.createIsUserOnlineView();
+		//view.isUserOnline.confirmOnlineBtn.setOnAction(e -> {
+		//	isUserOnline();
+		//});
+	}
+
+	private void isUserOnline() {
+		if (model.isUserOnline(view.isUserOnline.userField.getText())) {
+			view.isUserOnline.userIsOnline();
+		} else {
+			view.isUserOnline.userIsOffline();
+		}
+	}
 
 	private void closeView() {
 		view.myProfileView.stop();
