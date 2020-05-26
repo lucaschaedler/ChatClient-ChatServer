@@ -2,7 +2,6 @@ package chatroom.controller;
 
 import java.util.Locale;
 import java.util.Optional;
-
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.abstractClasses.Controller;
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.commonClasses.Translator;
 import chatroom.ServiceLocator;
@@ -10,13 +9,10 @@ import chatroom.model.App_Model;
 import chatroom.server.Account;
 import chatroom.view_.App_View;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
-import javafx.scene.input.KeyCode;
 import javafx.stage.WindowEvent;
 
 /**
