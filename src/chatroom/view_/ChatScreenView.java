@@ -14,11 +14,11 @@ public class ChatScreenView extends ScrollPane {
 		screenTextArea = new TextArea();
 		screenTextArea.setText("--->>>Nachrichten anzeigen lassen<<<---");
 		screenTextArea.setEditable(false); //show messages only
-		screenTextArea.setMinSize(700, 400);
+		screenTextArea.setPrefSize(710, 400);
 		screenTextArea.setId("screenArea"); //CSS
 		this.setContent(screenTextArea);
 		this.setPadding(new Insets(10));
-		this.setMinSize(720, 420);
+		this.setPrefSize(720, 420);
 		
 	}
 

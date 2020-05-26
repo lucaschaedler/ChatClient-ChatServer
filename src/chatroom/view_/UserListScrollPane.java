@@ -18,6 +18,7 @@ public class UserListScrollPane extends ScrollPane {
 		userListView.setItems(otherUsersOnline); // default
 		this.setContent(userListView);
 		this.setPadding(new Insets(10));
+		this.setPrefWidth(180);
 	}
 
 	public void actualizeChatroomsUsers(ArrayList<String> chatroomUser) {

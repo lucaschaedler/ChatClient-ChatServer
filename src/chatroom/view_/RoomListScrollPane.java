@@ -21,6 +21,7 @@ public class RoomListScrollPane extends ScrollPane {
 		roomListView.setItems(chatRooms);
 		this.setContent(roomListView);
 		this.setPadding(new Insets(10));
+		this.setPrefWidth(180);
 	}
 
 	public void actualizeChatrooms(ArrayList<String> rooms) {
