@@ -66,13 +66,13 @@ public class IsUserOnlineView extends Stage {
 
 	public void userIsOnline() {
 		resultOnline = new Label();
-		pane.add(resultOnline, 2, 1);
+		pane.add(resultOnline, 1, 2);
 		updateTexts();
 	}
 
 	public void userIsOffline() {
 		resultOffline = new Label();
-		pane.add(resultOffline, 2, 1);
+		pane.add(resultOffline, 1, 2);
 		updateTexts();
 	}
 
