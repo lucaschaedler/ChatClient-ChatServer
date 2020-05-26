@@ -246,22 +246,11 @@ public class App_Model extends Model {
 					socketOut.write("ListChatrooms|" + token + "\n");
 					socketOut.flush();
 					if (successfullAnswer.get()) {
+
 						rooms = newData;
-						try {
-							rooms.remove(0);	
-						}catch(Exception e) {
-							
-						}
-						try {
-							rooms.remove(0);	
-						}catch(Exception e) {
-							
-						}
-						try {
-							rooms.remove(0);	
-						}catch(Exception e) {
-							
-						}
+						rooms.remove(0);
+						rooms.remove(0);
+						rooms.remove(0);
 					}
 
 				} catch (IOException e) {

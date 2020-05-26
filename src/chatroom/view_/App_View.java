@@ -31,7 +31,6 @@ public class App_View extends View<App_Model> {
 	public CreateNewChatroomView createNewChatroomView;
 	public MyProfileView myProfileView;
 	public ChangePasswordView changePasswordView;
-	public BlockListView blockListView;
 	public InformationView info;
 
 	public App_View(Stage stage, App_Model model) {
@@ -118,10 +117,6 @@ public class App_View extends View<App_Model> {
 
 	public void createChangePasswordView() {
 		changePasswordView = new ChangePasswordView();
-	}
-
-	public void createBlockListView() {
-		blockListView = new BlockListView();
 	}
 
 	public void createNewChatroomView() {

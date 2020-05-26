@@ -107,10 +107,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			doLogout();
 		});
 
-		view.chatMenu.blockListItem.setOnAction(e -> {
-			createBlockListView();
-		});
-
 		view.chatMenu.deleteAccountItem.setOnAction(e -> {
 			deleteAccount();
 		});
@@ -129,10 +125,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 		view.userPanel.joinRoomBtn.setOnAction(e -> {
 			joinChatroom();
-		});
-
-		view.userPanel.blockUserBtn.setOnAction(e -> {
-			blockSelectedUser();
 		});
 
 		view.userPanel.sendMessageBtn.setOnAction(e -> {
@@ -161,11 +153,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 				sl.setTranslator(new Translator(locale.getLanguage()));
 				try {
 					view.chatMenu.updateTexts();
-				} catch (NullPointerException e) {
-					// ignore happen when view isn't open
-				}
-				try {
-					view.blockListView.updateTexts();
 				} catch (NullPointerException e) {
 					// ignore happen when view isn't open
 				}
@@ -212,13 +199,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	private void closeView() {
 		view.myProfileView.stop();
-	}
-
-	private void createBlockListView() {
-		view.createBlockListView();
-		view.blockListView.getUnblockBtn().setOnAction(e -> {
-			unBlockUser();
-		});
 	}
 
 	private void createChangePasswordView() {
@@ -352,22 +332,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		view.getLogoutItem().setDisable(true);
 		view.getLoginItem().setDisable(false);
 		view.getCreateAccountItem().setDisable(false);
-//		try {
-//			leaveChatroom();
-//		} catch (Exception e) {
-//			// ignorieren falls man in keinem Chatroom ist
-//		}
-//das ist das problem darum kann man sich nicht wieder einloggen
-	}
-
-	private void blockSelectedUser() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void unBlockUser() {
-		// TODO Auto-generated method stub
-
 	}
 
 	private void deleteAccount() {
@@ -382,7 +346,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		}
 	}
 
-	private void refresh() {// ev entfernen
+	private void refresh() {
 		listChatrooms();
 	}
 
@@ -418,7 +382,6 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	public void deleteChatroom() {
 		if (model.deleteChatroom(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem())) {
-			//leaveChatroom(); da man keine auswahl mer hat welchen man leaven will
 			listChatrooms();
 		}
 
