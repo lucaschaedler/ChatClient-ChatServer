@@ -17,7 +17,7 @@
 **App Features:**
 
 - Der Chatroom-GUI ist in Raumliste (links), Nachrichten-Fenster (mitte), Userliste (die sich im akutellen Raum befinden) (rechts), Benutzerbereich mit verschiedenen Buttons und einem Schreib-Feld aufgeteilt.
-- 
+
 Funktionalitäten der Buttons
 - Raum hinzufügen: RaumHinzufüg-GUI wird geöffnet. Der Benutzer kann einen beliebigen Raum erstellen (sofern der eingegebene Raumname nicht schon vergriffen ist)
 - Raum betreten: Der Raum, welcher in der Raumliste (links) angewählt ist, wird betreten. Ein Label (unten-links) zeigt an in welchem Raum man sich momentan befindet.
