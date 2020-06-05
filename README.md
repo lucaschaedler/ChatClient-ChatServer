@@ -22,3 +22,5 @@ Nachfolgend werden die Funktionalitäten der Buttons beschreiben
 - Raum löschen: Der Raum, welcher in der Raumliste (links) angewählt ist, wird gelöscht sofern derselbe User in erstellt hat.
 - Raum verlassen: Der aktuelle Raum wird verlassen.
 - Senden: eingegebene Nachricht wird versendet. Alternativ kann auch mit der ENTER-Taste benutzt werden. Wenn eine Nachricht gesendet werden will der User sich jedoch in keinem Raum befindet wird ein NoRoom-GUI geöffnet das dem User mitteilt, dass er zuerste einen Raum betreten soll.
+- Bei falschen eingaben im Login oder sonstigen unkorrekten Eingaben, Bentzer erhält Rückmeldung mit einem InfoLabel im View das offen ist.
+- Ganzen Programm mit eim Logger ausgestattet, um so von der Konsole eventuelle Fehler oder Probleme zu lesen.
