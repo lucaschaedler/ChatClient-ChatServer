@@ -278,7 +278,9 @@ public class App_Model extends Model {
 	}
 
 	public void listMessageText(ArrayList<String> data) {
-		message.set(data.get(1) + ": " + data.get(data.size() - 1));
+		if (currentChatroom.equals(data.get(2))) {
+			message.set(data.get(1) + ": " + data.get(data.size() - 1));
+		}
 	}
 
 	public void getTheServerMessages() {
@@ -433,7 +435,7 @@ public class App_Model extends Model {
 	public String getUserName() {
 		return currentUser;
 	}
-	
+
 	public Boolean getIsOnline() {
 		return isOnline;
 	}

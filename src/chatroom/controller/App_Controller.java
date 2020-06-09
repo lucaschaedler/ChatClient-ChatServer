@@ -414,14 +414,20 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void createAccountOnServer() {
-		String name = view.getUsernameCreate();
-		String password = view.getPasswordCreate();
-		if (model.createAccount(name, password)) {
-			view.createNewAccountViewStop();
-			view.createNewLoginViewStart();
+		
+		if (view.accountView.password.getText().equals(view.accountView.passwordConfirm.getText())) {
+			String name = view.getUsernameCreate();
+			String password = view.getPasswordCreate();
+			if (model.createAccount(name, password)) {
+				view.createNewAccountViewStop();
+				view.createNewLoginViewStart();
+			} else {
+				view.accountView.failedToCreateAccount();
+			}
 		} else {
-			view.accountView.failedToCreateAccount();
+			view.accountView.failedPassword();
 		}
+
 	}
 
 	public void deleteChatroom() {
