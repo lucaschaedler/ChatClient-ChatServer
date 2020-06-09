@@ -16,7 +16,7 @@ public class AccountView extends Stage {
 	public TextField userName, password, passwordConfirm;
 	public Label userNameLbl, passwordLbl, passwordConfirmLbl;
 	public GridPane pane;
-	public Label failedLbl;
+	public Label failedLbl, failedpassword;
 
 	public AccountView() {
 		pane = new GridPane();
@@ -42,13 +42,13 @@ public class AccountView extends Stage {
 
 		Scene scene = new Scene(pane);
 		this.setScene(scene);
-	//this.show();
+		// this.show();
 		this.setAlwaysOnTop(true);
-		
+
 		updateTexts();
 
 	}
-	
+
 	public void start() {
 		this.show();
 	}
@@ -98,13 +98,29 @@ public class AccountView extends Stage {
 		passwordConfirmLbl.setText(t.getString("accountview.label.passwordconfirmlbl"));
 		confirmBtn.setText(t.getString("loginview.button.confirmbtn"));
 		cancelBtn.setText(t.getString("accountview.button.cancelBtn"));
-		try{failedLbl.setText(t.getString("accountview.lable.failedlbl"));
-		
-		}catch(Exception e) {
-			//nullpointer fals das Label noch nicht existiert
+		try {
+			failedLbl.setText(t.getString("accountview.lable.failedlbl"));
+
+		} catch (Exception e) {
+			// nullpointer fals das Label noch nicht existiert
+		}
+		try {
+			failedLbl.setText(t.getString("accountview.lable.failedpassword"));
+
+		} catch (Exception e) {
+			// nullpointer fals das Label noch nicht existiert
 		}
 		this.setTitle(t.getString("accountview.titel"));
 		this.sizeToScene();
+
+	}
+
+	public void failedPassword() {
+		failedpassword = new Label("Password inconsistent");
+		failedpassword.setTextFill(Color.RED);
+		pane.add(failedpassword, 2, 4);
+		this.sizeToScene();
+		updateTexts();
 
 	}
 
