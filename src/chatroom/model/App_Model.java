@@ -73,9 +73,9 @@ public class App_Model extends Model {
 		return connection;
 	}
 
-	public boolean createChatroom(String name, boolean isPublic) {
+	public boolean createChatroom(String name) {
 		try {
-			socketOut.write("CreateChatroom|" + token + "|" + name + "|" + isPublic + "\n");
+			socketOut.write("CreateChatroom|" + token + "|" + name + "|" + true + "\n");
 			socketOut.flush();
 			Thread.sleep(900);
 			if (successfullAnswer.get()) {

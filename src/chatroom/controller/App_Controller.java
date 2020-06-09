@@ -302,9 +302,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	private void addNewRoom() {
 		view.createChatroomView();
 		view.createNewChatroomView.createNewRoomBtn.setOnAction(e -> {
-			if (model.createChatroom(view.createNewChatroomView.chatroomNameTxtF.getText(),
-					view.createNewChatroomView.isPublicCheckBox.isSelected())) {
-				// ev direkt joinen nach erstellen
+			if (model.createChatroom(view.createNewChatroomView.chatroomNameTxtF.getText())) {
 				view.createNewChatroomView.stop();
 				listChatrooms();
 			} else {
