@@ -8,10 +8,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.abstractClasses.Model;
 import chatroom.ServiceLocator;
-import chatroom.view_.InformationView;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 
