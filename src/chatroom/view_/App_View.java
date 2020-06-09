@@ -33,6 +33,7 @@ public class App_View extends View<App_Model> {
 	public ChangePasswordView changePasswordView;
 	public InformationView info;
 	public IsUserOnlineView isUserOnline;
+	public DeleteAccountView deleteAccountView;
 
 	public App_View(Stage stage, App_Model model) {
 		super(stage, model);
@@ -163,6 +164,10 @@ public class App_View extends View<App_Model> {
 	
 	public void createIsUserOnlineView() {
 		isUserOnline = new IsUserOnlineView();
+	}
+
+	public void createDeleteAccountView() {
+		deleteAccountView = new DeleteAccountView();
 	}
 
 

@@ -13,6 +13,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.WindowEvent;
 
 /**
@@ -104,7 +105,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		});
 
 		view.chatMenu.deleteAccountItem.setOnAction(e -> {
-			deleteAccount();
+			createDeleteAccountView();
 		});
 
 		view.chatMenu.refreshItem.setOnAction(e -> { // evt rausnehmen?
@@ -196,6 +197,11 @@ public class App_Controller extends Controller<App_Model, App_View> {
 				} catch (NullPointerException e) {
 					// ignore happen when view isn't open
 				}
+				try {
+					view.deleteAccountView.updateTexts();
+				} catch (NullPointerException e) {
+					// ignore happen when view isn't open
+				}
 
 				view.getStage().sizeToScene();
 
@@ -203,6 +209,16 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		}
 
 	}// konstruktor
+
+	private void createDeleteAccountView() {
+		view.createDeleteAccountView();
+		view.deleteAccountView.closeBtn.setOnAction(e -> {
+			view.deleteAccountView.stop();
+		});
+		view.deleteAccountView.confirmBtn.setOnAction(e -> {
+			deleteAccount();
+		});
+	}
 
 	private void createIsUserOnlineView() {
 		view.createIsUserOnlineView();
