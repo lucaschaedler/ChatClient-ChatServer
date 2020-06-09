@@ -14,7 +14,6 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.WindowEvent;
 
 /**
@@ -74,6 +73,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 			Platform.runLater(() -> {
 				view.chatScreenView.createNewMessageLine(newValue);
 				listChatroomUser();
+				listChatrooms();
 			});
 		});
 
@@ -356,6 +356,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		if (model.inChatroom) {
 			model.sendMessage(view.userPanel.writeTextArea.getText());
 			view.userPanel.writeTextArea.clear();
+			listChatrooms();
 			listChatroomUser();
 		} else {
 			view.createInformationView();
