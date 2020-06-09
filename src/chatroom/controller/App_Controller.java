@@ -1,6 +1,7 @@
 package chatroom.controller;
 
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Optional;
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.abstractClasses.Controller;
 import ch.fhnw.richards.topic10_JavaAppTemplate.jat_v2.commonClasses.Translator;
@@ -438,7 +439,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	public void deleteChatroom() {
-		if (model.currentChatroom.equals(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem())) {
+		if (Objects.equals(model.currentChatroom, view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem())) {
 			leaveChatroomDelete();
 		}
 		if (model.deleteChatroom(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem())) {

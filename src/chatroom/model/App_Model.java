@@ -28,7 +28,7 @@ public class App_Model extends Model {
 	private final String IP_ADRESS = "147.86.8.31";
 	private final int PORTNUMBER = 50001;
 	private String token;
-	public String currentChatroom;
+	public String currentChatroom = null;
 	public String currentUser;
 	public ArrayList<String> newData = new ArrayList<String>();
 	public SimpleBooleanProperty successfullAnswer = new SimpleBooleanProperty();
