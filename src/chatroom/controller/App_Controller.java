@@ -32,7 +32,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 		view.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
 			@Override
 			public void handle(WindowEvent event) {
-				leaveChatroom();
+				doLogout();
 				Platform.exit();
 			}
 		});
