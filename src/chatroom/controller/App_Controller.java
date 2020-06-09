@@ -229,8 +229,10 @@ public class App_Controller extends Controller<App_Model, App_View> {
 
 	private void isUserOnline() {
 		if (model.isUserOnline(view.isUserOnline.userField.getText())) {
+			view.isUserOnline.removeResult();
 			view.isUserOnline.userIsOnline();
 		} else {
+			view.isUserOnline.removeResult();
 			view.isUserOnline.userIsOffline();
 		}
 	}
