@@ -292,7 +292,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	private void exit() {
 		
 		serviceLocator.getConfiguration().save();
-		leaveChatroom();
+		doLogout();
 		Platform.exit();
 		System.exit(0);
 		serviceLocator.getLogger().info("Application terminated");
