@@ -278,9 +278,7 @@ public class App_Model extends Model {
 	}
 
 	public void listMessageText(ArrayList<String> data) {
-		if (currentChatroom.equals(data.get(2))) {
 			message.set(data.get(1) + ": " + data.get(data.size() - 1));
-		}
 	}
 
 	public void getTheServerMessages() {

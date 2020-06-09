@@ -290,6 +290,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void exit() {
+		
 		serviceLocator.getConfiguration().save();
 		leaveChatroom();
 		Platform.exit();
@@ -327,6 +328,9 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void joinChatroom() {
+		if (model.currentChatroom != null) {
+			leaveChatroomDelete();
+		}
 		if (view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem() != null) {
 			model.joinSelectedChatroom(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem());
 			view.userPanel
@@ -370,6 +374,9 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void doLogout() {
+		if (model.currentChatroom != null) {
+			leaveChatroomDelete();
+		}
 		String name = view.getLoginUsername();
 		String password = view.getLoginPassword();
 		model.logout(name, password);
@@ -416,7 +423,7 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	private void createAccountOnServer() {
-		
+
 		if (view.accountView.password.getText().equals(view.accountView.passwordConfirm.getText())) {
 			String name = view.getUsernameCreate();
 			String password = view.getPasswordCreate();
@@ -433,10 +440,22 @@ public class App_Controller extends Controller<App_Model, App_View> {
 	}
 
 	public void deleteChatroom() {
+		if (model.currentChatroom.equals(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem())) {
+			leaveChatroomDelete();
+		}
 		if (model.deleteChatroom(view.roomListScrollPane.roomListView.getSelectionModel().getSelectedItem())) {
 			listChatrooms();
 		}
 
+	}
+
+	private void leaveChatroomDelete() {
+		if (model.leaveChatroom(model.currentChatroom)) {
+			view.userPanel.changeChatroomName("--");
+			view.userPanel.writeTextArea.clear();
+			view.chatScreenView.removeAllMessages();
+			view.userListScrollPane.emptyList();
+		}
 	}
 
 	private void leaveChatroom() {
